@@ -7,9 +7,9 @@ There are two components to this project in terms of what needs to be installed,
 
 **Python**
 
-**Javascript**
+**Javascript**<br>
 Within the src folder we are going to install a few things. First you will need `node` and `npm` (node package manager). Installing these may vary depending on your machine, on Linux run the following in the Terminal:<br>
-&emsp; `sudo apt install nodejs` (the `npm` binary comes along with `nodejs`)<br>Then we will use `npm` to install `webpack`, `babel` and `react`. These can all installed with the following commands.<br>
+&emsp;`sudo apt install nodejs` (the `npm` binary comes along with `nodejs`)<br>Then we will use `npm` to install `webpack`, `babel` and `react`. These can all installed with the following commands.<br>
 &emsp;`npm install webpack webpack-cli --save-dev`<br>
 &emsp;`npm install --save-dev babel-loader @babel/core @babel/preset-env @babel/preset-react`<br>
 &emsp;`npm install --save react react-dom`
