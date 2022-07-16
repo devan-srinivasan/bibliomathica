@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bibliomath'
+    'bibliomath',
+    'users.apps.UsersConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -79,8 +81,14 @@ WSGI_APPLICATION = 'django_files.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        "CLIENT": {
+           "name": 'test',
+           "host": "mongodb+srv://William:SAqQm0LRh8K6TW13@cloud13.siunpgf.mongodb.net/?retryWrites=true&w=majority",
+           "username": 'William',
+           "password": 'SAqQm0LRh8K6TW13',
+           "authMechanism": "SCRAM-SHA-1",
+        }, 
     }
 }
 
