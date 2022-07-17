@@ -3,14 +3,14 @@
     <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Join Today</legend>
+                <legend class="border-bottom mb-4">Log in</legend>
                 {{ form|crispy }}
         </fieldset>
         <div>
-            <button type="submit">Sign up</button>
+            <button type="submit">Login</button>
         </div>
     </form>
     <div>
-        <small>Already Have An Account? <a href="{% url 'login' %}">Sign in</a> </small>
+        <small>Want to have An Account? <a href="{% url 'register' %}">Sign up now</a> </small>
     </div>
 </div>
