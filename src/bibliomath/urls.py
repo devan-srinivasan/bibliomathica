@@ -4,6 +4,6 @@ from . import views
 
 urlpatterns = [
     path('', views.explore, name='explore'),
-    path('hello-world/', TemplateView.as_view(template_name='hello_world.html'), name='hello-world'),
+    path('puzzle/', TemplateView.as_view(template_name='puzzle.html'), name='puzzle'),
     path('explore/', views.explore, name='explore'),
 ]

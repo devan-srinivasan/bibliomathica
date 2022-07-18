@@ -1,4 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-
+    <div class="grid-container">
+        {% for topic in topics %}
+            <div class="grid-item">
+                <h2>{{ topic.title }}</h2>
+                <h4>{{ topic.description }}</h4>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock content %}
