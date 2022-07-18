@@ -22,3 +22,13 @@ Another example:
 ```sh
 https://gist.github.com/uneconomicalfairy14/0d23275414122217c65882a56a30d615
 ```
+
+## React & Webpack frontend pipeline
+```sh
+https://www.saaspegasus.com/guides/modern-javascript-for-django-developers/integrating-javascript-pipeline/#setting-up-react-with-babel
+```
+
+React tutorial
+```sh
+https://reactjs.org/tutorial/tutorial.html
+```
