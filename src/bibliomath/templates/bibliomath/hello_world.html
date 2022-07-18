@@ -1,11 +1,6 @@
+{% extends "base.html" %}
 {% load static %}
-<!doctype html>
-<html>
-  <head>
-    <title>Bibliomathica</title>
-  </head>
-  <body>  
-    <div id="root"></div>
-    <script src="{% static 'index-bundle.js' %}"></script>
-  </body>
-</html>
+{% block content %}
+<div id="root"></div>
+<script src="{% static 'index-bundle/index-bundle.js' %}"></script>
+{% endblock content %}
