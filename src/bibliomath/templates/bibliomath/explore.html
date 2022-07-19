@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'bibliomath/explore.css' %}">
+{% endblock stylesheets %}
 {% block content %}
     <div class="grid-container">
         {% for topic in topics %}
             <div class="grid-item">
-                <h2>{{ topic.title }}</h2>
-                <h4>{{ topic.description }}</h4>
+                <a class="grid-item-link" href="{{ topic.link }}">
+                    <h2>{{ topic.title }}</h2>
+                    <p>{{ topic.description }}</p>
+                </a>
             </div>
         {% endfor %}
     </div>

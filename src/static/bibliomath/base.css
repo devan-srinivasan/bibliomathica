@@ -1,17 +1,19 @@
 .header-bar {
+    border-width: 4px;
+    border-style: solid;
     display: flex;
     align-items: center;
     flex-direction: row;
-    background-color: mediumpurple;
+    background-color: white;
 }
 
 .logo {
     margin: 0;
-    color: white;
+    color: black;
     padding-left: 2%;
 }
 
-ul {
+.nav-bar {
     list-style-type: none;
     margin-left: auto;
     margin-right: 2%;
@@ -21,30 +23,23 @@ ul {
     overflow: hidden;
   }
   
-li {
+.nav-item {
     float: left;
 }
 
-li a {
+.nav-item a {
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    font-size: 14px;
 }
 
 h1, a {
     font-family: monospace;
 }
 
-a {
-    font-size: 14px;
-}
-
-li:hover {
-    background-color:mediumslateblue;
-}
-
-li:active {
-    background-color:mediumslateblue;
+.nav-item:hover {
+    background-color:#a98de2;
 }
