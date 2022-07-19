@@ -1,0 +1,19 @@
+.completed-item-container, .collection-item-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.completed-item-container{
+    margin-left: auto;
+}
+
+.remove-col-item {
+    background-color: white;
+    color: black;
+    margin-left: 5px;
+}
+
+.remove-col-item:hover {
+    background-color: #c9b8ed;
+}

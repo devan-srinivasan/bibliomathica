@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'bibliomath/base.css' %}">
+        {% block stylesheets %}{% endblock %}
+        <title>Bibliomathica</title>
+    </head>
+    <body>
+        <div class="header-bar">
+            <h1 class="logo">Bibliomathica</h1>
+            <ul class="nav-bar">
+                <li class="nav-item"><a href="/explore">Explore</a></li>
+                <li class="nav-item"><a href="/puzzle">Puzzle</a></li>
+                <li class="nav-item"><a href="/collection">Collection</a></li>
+                <li class="nav-item"><a href="">Account</a></li>
+            </ul>
+        </div>
+        <div>
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>

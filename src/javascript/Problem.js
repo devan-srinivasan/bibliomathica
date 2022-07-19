@@ -1,4 +1,4 @@
-function App() {
+function Problem() {
     return (
         <h1>Hello, from the App!</h1>
     )
