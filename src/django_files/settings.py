@@ -138,4 +138,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-LOGIN_REDIRECT_URL = 'hello-world'
+#Adding automatic redirection after user log in
+LOGIN_REDIRECT_URL = 'explore'
+#Adding redirection to log in page, when user tries to access restricted pages
+LOGIN_URL = 'login'

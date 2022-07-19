@@ -3,9 +3,7 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{% static 'bibliomath/gridstyles.css' %}">
 {% endblock stylesheets %}
+{% load crispy_forms_tags %}
 {% block content %}
-    <h2> You have been logged out</h2>
-    <div>
-        <small><a href="{% url 'login' %}">Log In Again</a> </small>
-    </div>
-{% endblock content %}
+    <h1> {{ user.username }} </h1>
+{% endblock content %} 

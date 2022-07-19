@@ -13,7 +13,14 @@
                 <li class="nav-item"><a href="/explore">Explore</a></li>
                 <li class="nav-item"><a href="/puzzle">Puzzle</a></li>
                 <li class="nav-item"><a href="/collection">Collection</a></li>
-                <li class="nav-item"><a href="">Account</a></li>
+                
+                {% if user.is_authenticated %}
+                <li class="nav-item"><a href="{% url 'logout' %}">Logout</a></li>
+                <li class="nav-item"><a href="{% url 'profile' %}">Account</a></li>
+                {% else %}
+                <li class="nav-item"><a href="{% url 'login' %}">Login</a></li>
+                <li class="nav-item"><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
             </ul>
         </div>
         <div>
