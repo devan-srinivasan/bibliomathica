@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{% static 'bibliomath/explore.css' %}">
+    <link rel="stylesheet" href="{% static 'bibliomath/gridstyles.css' %}">
 {% endblock stylesheets %}
 {% block content %}
     <div class="grid-container">
@@ -9,8 +9,8 @@
             <div class="grid-item">
                 <a class="grid-item-link" href="{{ topic.link }}">
                     <h2>{{ topic.title }}</h2>
-                    <p>{{ topic.description }}</p>
                 </a>
+                <p>{{ topic.description }}</p> 
             </div>
         {% endfor %}
     </div>
