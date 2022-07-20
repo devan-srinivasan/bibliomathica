@@ -19,25 +19,39 @@
         {% endfor %}
     </div>
     <section class="create-resource" id="create-resource">
-        <div class="form-container">
-            <form action="/create" method="get">
-                <h1>Add a Resource</h1>
-                <label for="topic"><b>Topic</b></label><br>
-                <select name="topic">
-                    {% for topic in topics %}
-                        <option>
-                            {{ topic.title }}
-                        </option>
-                    {% endfor %}
-                </select><br>
-                <label for="title"><b>Title</b></label>
-                <input type="text" placeholder="Enter title" name="title" required><br>
-                <label for="description"><b>Description</b></label>
-                <textarea type="text" placeholder="Enter (brief) description" name="description" required></textarea><br>
-                <label for="link"><b>Link</b></label>
-                <input type="text" placeholder="Enter link" name="link" required><br>
-                <button type="submit">Create</button>
-            </form>
+        <div class="dual-section">
+            <div class="form-container">
+                <form action="/create_resource/" method="post">
+                    {% csrf_token %}
+                    <h1>Add a Resource</h1>
+                    <label for="topic"><b>Topic</b></label><br>
+                    <select name="topic">
+                        {% for topic in topics %}
+                            <option>
+                                {{ topic.title }}
+                            </option>
+                        {% endfor %}
+                    </select><br>
+                    <label for="title"><b>Title</b></label>
+                    <input type="text" placeholder="Enter title" name="title" required><br>
+                    <label for="description"><b>Description</b></label>
+                    <textarea type="text" placeholder="Enter (brief) description" name="description" required></textarea><br>
+                    <label for="link"><b>Link</b></label>
+                    <input type="text" placeholder="Enter link" name="link" required><br>
+                    <button type="submit">Create</button>
+                </form>
+            </div>
+            <div class="form-container">
+                <form action="/create_topic/" method="POST">
+                    {% csrf_token %}
+                    <h1>Add a Topic</h1>
+                    <label for="title"><b>Title</b></label>
+                    <input type="text" placeholder="Enter title" id="title" name="title" required><br>
+                    <label for="description"><b>Description</b></label>
+                    <textarea type="text" placeholder="Enter (brief) description" id="description" name="description" required></textarea><br>
+                    <button type="submit">Create</button>
+                </form>
+            </div>
         </div>
     </section>
 {% endblock content %}
