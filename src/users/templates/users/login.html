@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{% static 'bibliomath/gridstyles.css' %}">
+    
 {% endblock stylesheets %}
 {% block content %}
 {% load crispy_forms_tags %}
 <div class="content-section">
-    <form method="POST">
+    <form class="user-form" method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Log in</legend>
@@ -16,7 +16,7 @@
             <button type="submit">Login</button>
         </div>
     </form>
-    <div>
+    <div class="register-button">
         <small>Want to have An Account? <a href="{% url 'register' %}">Sign up now</a> </small>
     </div>
 </div>

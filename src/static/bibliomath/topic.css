@@ -13,7 +13,6 @@
     background-color: white;
     color: black;
     margin-left: auto;
-    font-family: monospace;
     font-size: 14px;
 }
 
@@ -21,16 +20,10 @@
     border-radius: 10px;
     background-color: #bea9e9;
     color: white;
-    font-family: monospace;
     font-size: 16px;
     margin-top: 10px;
 }
 
 .create:hover {
     background-color: #a98de2;
-}
-
-
-h2 {
-    font-family: monospace;
 }

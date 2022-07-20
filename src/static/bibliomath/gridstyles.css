@@ -17,11 +17,6 @@
     padding: 1%;
 }
 
-h2, h4, p {
-    padding: 5px;
-    font-family: monospace;
-}
-
 .grid-item-link:hover {
     color: #9e7edf;
 }

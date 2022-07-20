@@ -2,7 +2,6 @@
     border-radius: 10px;
     background-color: #bea9e9;
     color: white;
-    font-family: monospace;
     font-size: 16px;
     margin-top: 10px;
 }
@@ -12,8 +11,6 @@
 }
 
 option, button[type=submit], input, select, label, b, textarea {
-    font-family: monospace;
-    font-size: 16px;
     margin-top: 5px;
     margin-bottom: 5px;   
 }
