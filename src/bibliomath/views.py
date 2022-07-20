@@ -1,10 +1,10 @@
 from pydoc_data.topics import topics
-import re
-import resource
 from django.shortcuts import render, redirect
 from .models import Resource
 from bibliomath.managers.topic_manager import TopicsManager
 from bibliomath.managers.resource_manager import ResourceManager
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 # TOPICS
 TOPIC_MGR = TopicsManager()
@@ -29,14 +29,51 @@ def explore(request):
         }
         return render(request, 'bibliomath/explore.html', context)
 
-def collection(request):
-    # make some request to MongoDB
-    # get data and format it accordingly to display
-    resources = []
-    context = {
-        'resources': resources,
-    }
-    return render(request, 'bibliomath/collection.html', context)
+# new view for collections
+class ResourceListView(ListView):
+    model = Resource
+    template_name = 'bibliomath/collection.html'
+    context_object_name = 'resources'
+
+class ResourceDetailView(DetailView):
+    model = Resource
+
+class ResourceCreateView(LoginRequiredMixin, CreateView):
+    model = Resource
+    fields = ['title', 'description', 'link', 'topic']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class ResourceUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Resource
+    fields = ['title', 'description', 'link', 'topic']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        resource = self.get_object()
+        
+        return True
+    # def test_func(self):
+    #     resource = self.get_object()
+    #     if self.request.user == resource.author:
+    #         return True
+    #     return False
+
+class ResourceDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Resource
+    success_url = '/collection/'
+
+    def test_func(self):
+        resource = self.get_object()
+        
+        return True
+    
+# ends here
 
 def create_resource(request):
     res_topic = request.POST.get('topic', '')
