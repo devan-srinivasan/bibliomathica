@@ -23,7 +23,7 @@
             <div class="form-container">
                 <form action="/create_resource/" method="post">
                     {% csrf_token %}
-                    <h1>Add a Resource</h1>
+                    <h3>Add a Resource</h3>
                     <label for="topic"><b>Topic</b></label><br>
                     <select name="topic">
                         {% for topic in topics %}
@@ -44,7 +44,7 @@
             <div class="form-container">
                 <form action="/create_topic/" method="POST">
                     {% csrf_token %}
-                    <h1>Add a Topic</h1>
+                    <h3>Add a Topic</h3>
                     <label for="title"><b>Title</b></label>
                     <input type="text" placeholder="Enter title" id="title" name="title" required><br>
                     <label for="description"><b>Description</b></label>

@@ -6,6 +6,13 @@
     align-items: center;
     flex-direction: row;
     background-color: white;
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.content {
+    margin-left: 2%;
 }
 
 .logo {
@@ -37,10 +44,41 @@
     font-size: 14px;
 }
 
-h1, a {
-    font-family: monospace;
+.nav-item a:hover {
+    color:#a98de2;
 }
 
-.nav-item:hover {
+/* .nav-item:hover {
     background-color:#a98de2;
+} */
+
+.content-section {
+    margin-top: 2%;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 2px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* THIS IS FOR LOGIN, PROFILE, AND REGISTRATION ONLY */
+.user-form, .register-button {
+    padding: 2%;
+}
+
+/* THIS IS FOR PROFILE ONLY */
+.rounded-circle-account-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.media {
+    padding: 1%;
+}
+
+.media-body {
+    margin-left: 5%;
+    margin-top: auto;
 }
