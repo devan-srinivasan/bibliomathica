@@ -3,6 +3,7 @@ import re
 from django.shortcuts import render
 from .models import Resource
 from bibliomath.topics import TopicsList
+from bibliomath.helper import jsonify
 
 # TOPICS
 TOPIC_LIST = TopicsList()
@@ -11,23 +12,26 @@ TOPIC_LIST = TopicsList()
 def explore(request):
     # make some request to MongoDB
     # get data and format it accordingly to display
-    context = {
-        'topics': TOPIC_LIST.get_topics(),
-    }
-    return render(request, 'bibliomath/explore.html', context)
+    topic = request.GET.get('topic','')
+    if not topic == "":
+        # do some database stuff
+        query_set = Resource.objects.filter(topic=topic)
+        resources = jsonify(query_set)
+        context = {
+            'title': topic,
+            'resources': resources,
+        }
+        return render(request, 'bibliomath/topic.html', context)
+    else:
+        context = {
+            'topics': TOPIC_LIST.get_topics(),
+        }
+        return render(request, 'bibliomath/explore.html', context)
 
 def collection(request):
     # make some request to MongoDB
     # get data and format it accordingly to display
-    resources = [
-        {  
-            'title': 'Colliding Masses', 
-            'description': 'Why do the number of collisions between colliding masses, all powers of ten, spit out the digits of pi?',
-            'link': 'https://www.youtube.com/watch?v=jsYwFizhncE',
-            'complete': False,
-            'favourite': True,
-        }
-    ] * 3
+    resources = []
     context = {
         'resources': resources,
     }

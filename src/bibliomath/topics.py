@@ -6,7 +6,6 @@ class TopicsList:
         {  
             'title': 'Geometry', 
             'description': 'Everything to do with shapes',
-            'link': 'https://youtube.com',
         },
     ]
 

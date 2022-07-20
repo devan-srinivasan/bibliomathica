@@ -2,9 +2,13 @@
 {% load static %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{% static 'bibliomath/gridstyles.css' %}">
-    <link rel="stylesheet" href="{% static 'bibliomath/collection.css' %}">
+    <link rel="stylesheet" href="{% static 'bibliomath/topic.css' %}">
 {% endblock stylesheets %}
 {% block content %}
+    <h2>{{ title }}</h2>
+    <button class="create" onclick="location.href='/explore#create-resource'">
+        Add
+    </button>
     <div class="grid-container">
         {% for res in resources %}
             <div class="grid-item">
@@ -12,11 +16,7 @@
                     <a class="grid-item-link" href="{{ res.link }}">
                         <h2 class="grid-item-link">{{ res.title }}</h2>
                     </a>
-                    <div class="completed-item-container">
-                        <h4>Completed: </h4>
-                        <input type="checkbox" checked="False">
-                    </div>
-                    <button class="remove-col-item" onclick="alert('removed')">Remove</button>
+                    <button class="add-col-item" onclick="alert('added')">Add to Collection</button>
                 </div>
                 <p>{{ res.description }}</p>
             </div>
