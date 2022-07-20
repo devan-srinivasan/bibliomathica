@@ -7,5 +7,6 @@ urlpatterns = [
     path('puzzle/', TemplateView.as_view(template_name='puzzle.html'), name='puzzle'),
     path('explore/', views.explore, name='explore'),
     path('collection/', views.collection, name='collection'),
-    path('create/', views.create, name='create'),    # to be deleted
+    path('create_resource/', views.create_resource, name='create_resource'),
+    path('create_topic/', views.create_topic, name='create_topic'),
 ]

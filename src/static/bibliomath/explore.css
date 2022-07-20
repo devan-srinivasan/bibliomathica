@@ -33,9 +33,16 @@ input[type=text], textarea {
     border-width: 2px;
     border-radius: 10px;
     margin:0;
-    width: 50%;
+    width: 45%;
 }
 
 .create-resource {
     margin-top: 10px;
+}
+
+.dual-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    column-gap: 2%;
 }
