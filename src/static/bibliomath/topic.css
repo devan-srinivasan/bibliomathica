@@ -1,0 +1,36 @@
+.collection-item-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.add-col-item:hover {
+    background-color: #c9b8ed;
+}
+
+.add-col-item {
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    margin-left: auto;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.create {
+    border-radius: 10px;
+    background-color: #bea9e9;
+    color: white;
+    font-family: monospace;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.create:hover {
+    background-color: #a98de2;
+}
+
+
+h2 {
+    font-family: monospace;
+}

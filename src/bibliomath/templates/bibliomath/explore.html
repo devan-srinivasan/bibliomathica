@@ -11,7 +11,7 @@
     <div class="grid-container">
         {% for topic in topics %}
             <div class="grid-item">
-                <a class="grid-item-link" href="{{ topic.link }}">
+                <a class="grid-item-link" href="/explore?topic={{ topic.title }}">
                     <h2>{{ topic.title }}</h2>
                 </a>
                 <p>{{ topic.description }}</p> 
