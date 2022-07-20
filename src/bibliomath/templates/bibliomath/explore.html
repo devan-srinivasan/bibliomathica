@@ -2,8 +2,12 @@
 {% load static %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{% static 'bibliomath/gridstyles.css' %}">
+    <link rel="stylesheet" href="{% static 'bibliomath/explore.css' %}">
 {% endblock stylesheets %}
 {% block content %}
+    <button class="create" onclick="location.href='#create-resource'">
+        Add
+    </button>
     <div class="grid-container">
         {% for topic in topics %}
             <div class="grid-item">
@@ -14,4 +18,26 @@
             </div>
         {% endfor %}
     </div>
+    <section class="create-resource" id="create-resource">
+        <div class="form-container">
+            <form action="/create">
+                <h1>Add a Resource</h1>
+                <label for="topic"><b>Topic</b></label><br>
+                <select name="topic">
+                    {% for topic in topics %}
+                        <option>
+                            {{ topic.title }}
+                        </option>
+                    {% endfor %}
+                </select><br>
+                <label for="title"><b>Title</b></label>
+                <input type="text" placeholder="Enter title" name="title" required><br>
+                <label for="description"><b>Description</b></label>
+                <textarea type="text" placeholder="Enter (brief) description" name="description" required></textarea><br>
+                <label for="link"><b>Link</b></label>
+                <input type="text" placeholder="Enter link" name="link" required><br>
+                <button type="submit">Create</button>
+            </form>
+        </div>
+    </section>
 {% endblock content %}

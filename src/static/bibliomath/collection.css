@@ -9,9 +9,12 @@
 }
 
 .remove-col-item {
+    border-radius: 10px;
     background-color: white;
     color: black;
     margin-left: 5px;
+    font-family: monospace;
+    font-size: 14px;
 }
 
 .remove-col-item:hover {

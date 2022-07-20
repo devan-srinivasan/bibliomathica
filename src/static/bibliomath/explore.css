@@ -1,0 +1,41 @@
+.create {
+    border-radius: 10px;
+    background-color: #bea9e9;
+    color: white;
+    font-family: monospace;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.create:hover {
+    background-color: #a98de2;
+}
+
+option, button[type=submit], input, select, label, b, textarea {
+    font-family: monospace;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;   
+}
+
+form {
+    padding-left: 2%;
+}
+
+input[type=text], textarea {
+    width: 90%;
+    margin-left: auto;
+}
+
+.form-container {
+    color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    margin:0;
+    width: 50%;
+}
+
+.create-resource {
+    margin-top: 10px;
+}
