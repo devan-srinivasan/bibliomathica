@@ -138,6 +138,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+#Adding Media route and url for storing images
+MEDIA_ROOT = BASE_DIR.joinpath('media')
+MEDIA_URL = '/media/'
+
 #Adding automatic redirection after user log in
 LOGIN_REDIRECT_URL = 'explore'
 #Adding redirection to log in page, when user tries to access restricted pages
