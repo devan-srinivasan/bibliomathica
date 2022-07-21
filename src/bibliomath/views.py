@@ -65,7 +65,7 @@ def create_topic(request):
         return render(request, 'bibliomath/explore.html', context)
     else:
         context = {
-            'error': 'attempt to add duplicate resource'
+            'error': 'attempt to add duplicate topic'
         }
         return render(request, 'bibliomath/error.html', context)
 
@@ -74,8 +74,14 @@ def create_puzzle(request):
     p_title = request.POST.get('title', '')
     p_question = request.POST.get('question', '')
     p_answer = request.POST.get('answer', '')
-    PUZZLE_MGR.add_puzzle({'title': p_title, 'question': p_question, 'answer': p_answer})
-    return render(request, 'bibliomath/puzzle.html')
+    result = PUZZLE_MGR.add_puzzle({'title': p_title, 'question': p_question, 'answer': p_answer})
+    if result:
+        return render(request, 'bibliomath/puzzle.html')
+    else:
+        context = {
+            'error': 'attempt to add duplicate puzzle'
+        }
+        return render(request, 'bibliomath/error.html', context)
 
 def get_all_puzzles(request):
     return JsonResponse(json.dumps(PUZZLE_MGR.get_all_puzzles()), safe=False)
