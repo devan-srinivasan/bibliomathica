@@ -69,7 +69,7 @@ def create_topic(request):
         }
         return render(request, 'bibliomath/error.html', context)
 
-# for future this route can be used, doesn't need to necessarily be used
+# TODO delete eventually? or style better
 def create_puzzle(request):
     p_title = request.POST.get('title', '')
     p_question = request.POST.get('question', '')
