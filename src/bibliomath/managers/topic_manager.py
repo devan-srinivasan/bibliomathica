@@ -8,7 +8,7 @@ class TopicsManager:
         pass
         
     def get_topics(self):
-        return jsonify_topic(Topic.objects.all(), topic=True)
+        return jsonify_topic(Topic.objects.all())
     
     def add_topic(self, topic):
         all_topics = self.get_topics()

@@ -45,18 +45,29 @@ def create_resource(request):
     res_title = request.POST.get('title', '')
     res_description = request.POST.get('description', '')
     res_link = request.POST.get('link', '')
-    RESOURCE_MGR.add_resource({'topic': res_topic, 'title': res_title, 'description': res_description, 'link': res_link})
-
-    return redirect(f'/explore?topic={res_topic}')
+    result = RESOURCE_MGR.add_resource({'topic': res_topic, 'title': res_title, 'description': res_description, 'link': res_link})
+    if result:
+        return redirect(f'/explore?topic={res_topic}')
+    else:
+        context = {
+            'error': 'attempt to add duplicate resource'
+        }
+        return render(request, 'bibliomath/error.html', context)
 
 def create_topic(request):
     top_title = request.POST.get('title', '')
     top_description = request.POST.get('description', '')
-    TOPIC_MGR.add_topic({'title': top_title, 'description': top_description})
-    context = {
-        'topics': TOPIC_MGR.get_topics(),
-    }
-    return render(request, 'bibliomath/explore.html', context)
+    result = TOPIC_MGR.add_topic({'title': top_title, 'description': top_description})
+    if result:
+        context = {
+            'topics': TOPIC_MGR.get_topics(),
+        }
+        return render(request, 'bibliomath/explore.html', context)
+    else:
+        context = {
+            'error': 'attempt to add duplicate resource'
+        }
+        return render(request, 'bibliomath/error.html', context)
 
 # for future this route can be used, doesn't need to necessarily be used
 def create_puzzle(request):
@@ -67,4 +78,4 @@ def create_puzzle(request):
     return render(request, 'bibliomath/puzzle.html')
 
 def get_all_puzzles(request):
-    return JsonResponse(json.dumps(PUZZLE_MGR.get_all_puzzles()))
+    return JsonResponse(json.dumps(PUZZLE_MGR.get_all_puzzles()), safe=False)
