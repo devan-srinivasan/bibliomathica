@@ -1,13 +1,16 @@
-.create {
+.create, button[type="submit"] {
     border-radius: 10px;
     background-color: #bea9e9;
     color: white;
     font-size: 16px;
+}
+
+.create {
     margin-top: 10px;
 }
 
-.create:hover {
-    background-color: #a98de2;
+.create:hover, button[type="submit"]:hover {
+    background-color: #9179c3;
 }
 
 option, button[type=submit], input, select, label, b, textarea {

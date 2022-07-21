@@ -62,6 +62,10 @@
     margin-right: auto;
 }
 
+button:hover {
+    opacity: 0.8;
+}
+
 /* THIS IS FOR LOGIN, PROFILE, AND REGISTRATION ONLY */
 .user-form, .register-button {
     padding: 2%;

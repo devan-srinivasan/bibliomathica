@@ -1,14 +1,16 @@
+import json
 from pydoc_data.topics import topics
-import re
-import resource
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from .models import Resource
 from bibliomath.managers.topic_manager import TopicsManager
 from bibliomath.managers.resource_manager import ResourceManager
+from bibliomath.managers.puzzle_manager import PuzzleManager
 
-# TOPICS
+# MANAGERS
 TOPIC_MGR = TopicsManager()
 RESOURCE_MGR = ResourceManager()
+PUZZLE_MGR = PuzzleManager()
 
 # Create your views here.
 def explore(request):
@@ -43,15 +45,43 @@ def create_resource(request):
     res_title = request.POST.get('title', '')
     res_description = request.POST.get('description', '')
     res_link = request.POST.get('link', '')
-    RESOURCE_MGR.add_resource({'topic': res_topic, 'title': res_title, 'description': res_description, 'link': res_link})
-
-    return redirect(f'/explore?topic={res_topic}')
+    result = RESOURCE_MGR.add_resource({'topic': res_topic, 'title': res_title, 'description': res_description, 'link': res_link})
+    if result:
+        return redirect(f'/explore?topic={res_topic}')
+    else:
+        context = {
+            'error': 'attempt to add duplicate resource'
+        }
+        return render(request, 'bibliomath/error.html', context)
 
 def create_topic(request):
     top_title = request.POST.get('title', '')
     top_description = request.POST.get('description', '')
-    TOPIC_MGR.add_topic({'title': top_title, 'description': top_description})
-    context = {
-        'topics': TOPIC_MGR.get_topics(),
-    }
-    return render(request, 'bibliomath/explore.html', context)
+    result = TOPIC_MGR.add_topic({'title': top_title, 'description': top_description})
+    if result:
+        context = {
+            'topics': TOPIC_MGR.get_topics(),
+        }
+        return render(request, 'bibliomath/explore.html', context)
+    else:
+        context = {
+            'error': 'attempt to add duplicate topic'
+        }
+        return render(request, 'bibliomath/error.html', context)
+
+# TODO delete eventually? or style better
+def create_puzzle(request):
+    p_title = request.POST.get('title', '')
+    p_question = request.POST.get('question', '')
+    p_answer = request.POST.get('answer', '')
+    result = PUZZLE_MGR.add_puzzle({'title': p_title, 'question': p_question, 'answer': p_answer})
+    if result:
+        return render(request, 'bibliomath/puzzle.html')
+    else:
+        context = {
+            'error': 'attempt to add duplicate puzzle'
+        }
+        return render(request, 'bibliomath/error.html', context)
+
+def get_all_puzzles(request):
+    return JsonResponse(json.dumps(PUZZLE_MGR.get_all_puzzles()), safe=False)

@@ -17,3 +17,8 @@ class Topic(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+class Puzzle(models.Model):
+    title = models.CharField(max_length=50)
+    question = models.CharField(max_length=300)
+    answer = models.CharField(max_length=300)

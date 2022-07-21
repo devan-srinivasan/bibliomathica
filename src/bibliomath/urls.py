@@ -9,4 +9,6 @@ urlpatterns = [
     path('collection/', views.collection, name='collection'),
     path('create_resource/', views.create_resource, name='create_resource'),
     path('create_topic/', views.create_topic, name='create_topic'),
+    path('create_puzzle/', views.create_puzzle, name='create_puzzle'),
+    path('get_all_puzzles/', views.get_all_puzzles, name='get_all_puzzles'),
 ]

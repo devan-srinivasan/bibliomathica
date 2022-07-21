@@ -6,9 +6,11 @@
 {% endblock stylesheets %}
 {% block content %}
     <h2>{{ title }}</h2>
-    <button class="create" onclick="location.href='/explore#create-resource'">
-        Add
-    </button>
+    <div>
+        <button class="create" onclick="location.href='/explore#create-resource'">
+            Add Resource/Topic
+        </button>
+    </div>
     <div class="grid-container">
         {% for res in resources %}
             <div class="grid-item">
