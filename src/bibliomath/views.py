@@ -15,23 +15,6 @@ RESOURCE_MGR = ResourceManager()
 PUZZLE_MGR = PuzzleManager()
 
 # Create your views here.
-def explore(request):
-    # make some request to MongoDB
-    # get data and format it accordingly to display
-    topic = request.GET.get('topic','')
-    if not topic == "":
-        # do some database stuff
-        resources = RESOURCE_MGR.get_resources_topic(topic)
-        context = {
-            'title': topic,
-            'resources': resources,
-        }
-        return render(request, 'bibliomath/topic.html', context)
-    else:
-        context = {
-            'topics': TOPIC_MGR.get_topics(),
-        }
-        return render(request, 'bibliomath/explore.html', context)
 
 # new view for collections
 class ResourceListView(ListView):
@@ -78,6 +61,24 @@ class ResourceDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return True
     
 # ends here
+
+def explore(request):
+    # make some request to MongoDB
+    # get data and format it accordingly to display
+    topic = request.GET.get('topic','')
+    if not topic == "":
+        # do some database stuff
+        resources = RESOURCE_MGR.get_resources_topic(topic)
+        context = {
+            'title': topic,
+            'resources': resources,
+        }
+        return render(request, 'bibliomath/topic.html', context)
+    else:
+        context = {
+            'topics': TOPIC_MGR.get_topics(),
+        }
+        return render(request, 'bibliomath/explore.html', context)
 
 def collection(request):
     # make some request to MongoDB
@@ -134,3 +135,13 @@ def create_puzzle(request):
 
 def get_all_puzzles(request):
     return JsonResponse(json.dumps(PUZZLE_MGR.get_all_puzzles()), safe=False)
+
+def check_answer(request):
+    p_title = request.POST.get('title', '')
+    p_submitted_answer = request.POST.get('answer', '')
+    answer = PUZZLE_MGR.get_answer(p_title)
+    if p_submitted_answer == answer:        # TODO can allow for similar answers not char-by-char correctness
+        return JsonResponse(json.dumps({"result": "True"}))
+    else:
+        return JsonResponse(json.dumps({"result": "False"}))
+    

@@ -26,3 +26,6 @@ class Puzzle(models.Model):
     title = models.CharField(max_length=50)
     question = models.CharField(max_length=300)
     answer = models.CharField(max_length=300)
+
+    def answer(self) -> str:
+        return str(self.answer)
