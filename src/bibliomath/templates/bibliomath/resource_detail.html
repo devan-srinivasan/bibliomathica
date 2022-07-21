@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'bibliomath/gridstyles.css' %}">
+    <link rel="stylesheet" href="{% static 'bibliomath/collection.css' %}">
+{% endblock stylesheets %}
+{% block content %}
+    <div class="grid-container">
+        <div class="grid-item">
+            <div class="collection-item-header">
+                <a class="grid-item-link" href="{{ object.link }}">
+                    <h2 class="grid-item-link">{{ object.title }}</h2>
+                </a>
+            </div>
+            <p>{{ object.description }}</p>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'resource-update' object.id %}">Update</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'resource-delete' object.id %}">Delete</a>
+        </div>
+    </div>
+{% endblock content %}
