@@ -32,7 +32,7 @@ def explore(request):
 # new view for collections
 class ResourceListView(ListView):
     model = Resource
-    template_name = 'bibliomath/collection.html'
+    template_name = 'bibliomath/sudo.html'
     context_object_name = 'resources'
 
 class ResourceDetailView(DetailView):
@@ -66,7 +66,7 @@ class ResourceUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class ResourceDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Resource
-    success_url = '/collection/'
+    success_url = '/sudo/'
 
     def test_func(self):
         resource = self.get_object()
@@ -74,6 +74,16 @@ class ResourceDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return True
     
 # ends here
+
+def collection(request):
+    # make some request to MongoDB
+    # get data and format it accordingly to display
+    resources = []
+    context = {
+        'resources': resources,
+    }
+    return render(request, 'bibliomath/collection.html', context)
+
 
 def create_resource(request):
     res_topic = request.POST.get('topic', '')

@@ -11,11 +11,6 @@
                 <a class="grid-item-link" href="{{ object.link }}">
                     <h2 class="grid-item-link">{{ object.title }}</h2>
                 </a>
-                <div class="completed-item-container">
-                    <h4>Completed: </h4>
-                    <input type="checkbox" checked="False">
-                </div>
-                <button class="remove-col-item" onclick="alert('removed')">Remove</button>
             </div>
             <p>{{ object.description }}</p>
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'resource-update' object.id %}">Update</a>
