@@ -1,14 +1,16 @@
+import json
 from pydoc_data.topics import topics
-import re
-import resource
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from .models import Resource
 from bibliomath.managers.topic_manager import TopicsManager
 from bibliomath.managers.resource_manager import ResourceManager
+from bibliomath.managers.puzzle_manager import PuzzleManager
 
-# TOPICS
+# MANAGERS
 TOPIC_MGR = TopicsManager()
 RESOURCE_MGR = ResourceManager()
+PUZZLE_MGR = PuzzleManager()
 
 # Create your views here.
 def explore(request):
@@ -55,3 +57,14 @@ def create_topic(request):
         'topics': TOPIC_MGR.get_topics(),
     }
     return render(request, 'bibliomath/explore.html', context)
+
+# for future this route can be used, doesn't need to necessarily be used
+def create_puzzle(request):
+    p_title = request.POST.get('title', '')
+    p_question = request.POST.get('question', '')
+    p_answer = request.POST.get('answer', '')
+    PUZZLE_MGR.add_puzzle({'title': p_title, 'question': p_question, 'answer': p_answer})
+    return render(request, 'bibliomath/puzzle.html')
+
+def get_all_puzzles(request):
+    return JsonResponse(json.dumps(PUZZLE_MGR.get_all_puzzles()))

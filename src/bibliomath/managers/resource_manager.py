@@ -1,6 +1,6 @@
 from ftplib import all_errors
 from bibliomath.models import Resource
-from bibliomath.helper import jsonify
+from bibliomath.helper import jsonify_resource
 
 
 class ResourceManager:
@@ -9,10 +9,10 @@ class ResourceManager:
         pass
         
     def get_resources(self):
-        return jsonify(Resource.objects.all())
+        return jsonify_resource(Resource.objects.all())
 
     def get_resources_topic(self, topic):
-        return jsonify(Resource.objects.filter(topic=topic))
+        return jsonify_resource(Resource.objects.filter(topic=topic))
     
     def add_resource(self, resource):
         all_res = self.get_resources()

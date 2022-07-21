@@ -5,9 +5,11 @@
     <link rel="stylesheet" href="{% static 'bibliomath/explore.css' %}">
 {% endblock stylesheets %}
 {% block content %}
-    <button class="create" onclick="location.href='#create-resource'">
-        Add
-    </button>
+    <div>
+        <button class="create" onclick="location.href='#create-resource'">
+            Add Resource/Topic
+        </button>
+    </div>
     <div class="grid-container">
         {% for topic in topics %}
             <div class="grid-item">
