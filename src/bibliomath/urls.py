@@ -7,7 +7,7 @@ urlpatterns = [
     path('', views.explore, name='explore'),
     path('puzzle/', TemplateView.as_view(template_name='puzzle.html'), name='puzzle'),
     path('explore/', views.explore, name='explore'),
-    path('collection/', views.collection, name='collection'),
+    #path('collection/', views.collection, name='collection'),
     path('sudo/', ResourceListView.as_view(), name='sudo'),
     path('sudo/<int:pk>', ResourceDetailView.as_view(), name='resource-detail'),
     path('sudo/new/', ResourceCreateView.as_view(), name='resource-create'),

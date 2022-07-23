@@ -3,7 +3,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from users.models import Collection
+from bibliomath.models import Resource
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from django.views.generic import ListView
 
 # Create your views here.
 def register(request):
@@ -38,3 +41,21 @@ def profile(request):
         'p_form': p_form
     }
     return render(request, 'users/profile.html', context)
+
+
+def collection(request):
+    
+    collection = Collection.objects.filter(user=request.user)
+    collection_res = collection.values('resources')
+    resources = []
+    for res in collection_res:
+        if Resource.objects.filter(id=res['resources']).first() is not None:
+            resources.extend(Resource.objects.filter(id=res['resources']))
+
+
+    context = {
+        'collection': collection,
+        'resources': resources,
+    }
+    return render(request, 'users/collection.html', context)
+
