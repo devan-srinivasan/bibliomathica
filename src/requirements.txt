@@ -11,7 +11,6 @@ dnspython==2.2.1
 filelock==3.7.1
 Pillow==9.2.0
 pipenv==2022.7.4
-pkg_resources==0.0.0
 platformdirs==2.5.2
 pymongo==3.7.2
 pytz==2022.1
