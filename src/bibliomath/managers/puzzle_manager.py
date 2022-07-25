@@ -19,4 +19,4 @@ class PuzzleManager:
 
     def get_answer(self, title):
         ans_puz = Puzzle.objects.filter(title=title)
-        return ans_puz.answer()
+        return str(ans_puz.first().answer)

@@ -137,11 +137,11 @@ def get_all_puzzles(request):
     return JsonResponse(json.dumps(PUZZLE_MGR.get_all_puzzles()), safe=False)
 
 def check_answer(request):
-    p_title = request.POST.get('title', '')
-    p_submitted_answer = request.POST.get('answer', '')
+    p_title = request.GET.get('title', '')
+    p_submitted_answer = request.GET.get('answer', '')
     answer = PUZZLE_MGR.get_answer(p_title)
     if p_submitted_answer == answer:        # TODO can allow for similar answers not char-by-char correctness
-        return JsonResponse(json.dumps({"result": "True"}))
+        return JsonResponse(json.dumps({"result": "True"}), safe=False)
     else:
-        return JsonResponse(json.dumps({"result": "False"}))
+        return JsonResponse(json.dumps({"result": "False"}), safe=False)
     

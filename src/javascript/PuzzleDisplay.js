@@ -3,12 +3,11 @@ import InputSubmit from "./InputSubmit.js";
 class PuzzleDisplay extends Component {
   constructor(props) {
     super(props);
-    this.state = { submitted: "" };
   }
 
   handleSubmission(submission) {
-    this.setState({ submitted: submission });
-    console.log("PuzDis", submission);
+    fetch('/get_answer?title='+this.props.title+'&answer='+submission)
+    .then(response => console.log(response));
   }
 
   render() {
