@@ -5,7 +5,7 @@ This is a personal project between myself and William Zhang. We both are passion
 
 There are two components to this project in terms of what needs to be installed, the python dependencies and the javascript dependencies.
 
-**Python**
+**Python**<br>
 First make sure you have a virtual environment installed:
 ```sh
 pip install pipenv
@@ -21,15 +21,7 @@ pipenv install -r requirements.txt
 **Javascript**<br>
 Within the src folder we are going to install a few things. First you will need `node` and `npm` (node package manager). Installing these may vary depending on your machine, on Linux run the following in the Terminal:<br>
 &emsp;`sudo apt install nodejs` (the `npm` binary comes along with `nodejs`)<br>Then we will use `npm` to install `webpack`, `babel` and `react`. These can all installed with the following commands.<br>
-Webpack:
+Then we will install all frontend packages with the following command (from package.json)
 ```sh
-npm install webpack webpack-cli --save-dev
-```
-Babel:
-```sh
-npm install --save-dev babel-loader @babel/core @babel/preset-env @babel/preset-react
-```
-React
-```sh
-npm install --save react react-dom
+npm install
 ```
