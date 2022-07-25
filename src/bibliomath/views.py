@@ -14,24 +14,9 @@ TOPIC_MGR = TopicsManager()
 RESOURCE_MGR = ResourceManager()
 PUZZLE_MGR = PuzzleManager()
 
+ERROR = 0.01
+
 # Create your views here.
-def explore(request):
-    # make some request to MongoDB
-    # get data and format it accordingly to display
-    topic = request.GET.get('topic','')
-    if not topic == "":
-        # do some database stuff
-        resources = RESOURCE_MGR.get_resources_topic(topic)
-        context = {
-            'title': topic,
-            'resources': resources,
-        }
-        return render(request, 'bibliomath/topic.html', context)
-    else:
-        context = {
-            'topics': TOPIC_MGR.get_topics(),
-        }
-        return render(request, 'bibliomath/explore.html', context)
 
 # new view for collections
 class ResourceListView(ListView):
@@ -79,6 +64,24 @@ class ResourceDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     
 # ends here
 
+def explore(request):
+    # make some request to MongoDB
+    # get data and format it accordingly to display
+    topic = request.GET.get('topic','')
+    if not topic == "":
+        # do some database stuff
+        resources = RESOURCE_MGR.get_resources_topic(topic)
+        context = {
+            'title': topic,
+            'resources': resources,
+        }
+        return render(request, 'bibliomath/topic.html', context)
+    else:
+        context = {
+            'topics': TOPIC_MGR.get_topics(),
+        }
+        return render(request, 'bibliomath/explore.html', context)
+
 def collection(request):
     # make some request to MongoDB
     # get data and format it accordingly to display
@@ -99,7 +102,7 @@ def create_resource(request):
         return redirect(f'/explore?topic={res_topic}')
     else:
         context = {
-            'error': 'attempt to add duplicate resource'
+            'error': 'faulty/duplicate resource'
         }
         return render(request, 'bibliomath/error.html', context)
 
@@ -133,4 +136,16 @@ def create_puzzle(request):
         return render(request, 'bibliomath/error.html', context)
 
 def get_all_puzzles(request):
-    return JsonResponse(json.dumps(PUZZLE_MGR.get_all_puzzles()), safe=False)
+    return JsonResponse(PUZZLE_MGR.get_all_puzzles(), safe=False)
+
+def check_answer(request):
+    p_title = request.GET.get('title', '')
+    p_submitted_answer = request.GET.get('answer', '')
+    answer = PUZZLE_MGR.get_answer(p_title)
+    print(p_submitted_answer, answer)
+    # for interviewers: only top Gs check if a sting is a float like this
+    if all(x in [str(i) for i in list(range(0,10))] + ['.', '-'] for x in p_submitted_answer) and abs(float(p_submitted_answer) - float(answer)) < ERROR:        # TODO can allow for similar answers not char-by-char correctness
+        return JsonResponse({"result": "True"}, safe=False)
+    else:
+        return JsonResponse({"result": "False"}, safe=False)
+    

@@ -16,3 +16,7 @@ class PuzzleManager:
         new_puz = Puzzle(title=puzzle['title'], question=puzzle['question'], answer=puzzle['answer'])
         new_puz.save()
         return True
+
+    def get_answer(self, title):
+        ans_puz = Puzzle.objects.filter(title=title)
+        return str(ans_puz.first().answer)

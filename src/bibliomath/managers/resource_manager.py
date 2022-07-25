@@ -19,7 +19,7 @@ class ResourceManager:
         for r in all_res:
             if r['title'] == resource['title'] or r['link'] == resource['link']:
                 return False
-        if not resource['link'].contains('https://'):
+        if not 'https://' in resource['link'] and not 'http://' in resource['link']:
             return False
         new_res = Resource(title=resource['title'], description=resource['description'], link=resource['link'], topic=resource['topic'])
         new_res.save()

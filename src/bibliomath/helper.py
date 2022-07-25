@@ -24,6 +24,5 @@ def jsonify_puzzle(query_set):
         return_list.append({
             'title': item.title,
             'question': item.question,
-            'answer': item.answer,
         })
     return return_list
