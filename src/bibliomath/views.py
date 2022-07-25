@@ -102,7 +102,7 @@ def create_resource(request):
         return redirect(f'/explore?topic={res_topic}')
     else:
         context = {
-            'error': 'attempt to add duplicate resource'
+            'error': 'faulty/duplicate resource'
         }
         return render(request, 'bibliomath/error.html', context)
 
@@ -136,7 +136,7 @@ def create_puzzle(request):
         return render(request, 'bibliomath/error.html', context)
 
 def get_all_puzzles(request):
-    return JsonResponse(json.dumps(PUZZLE_MGR.get_all_puzzles()), safe=False)
+    return JsonResponse(PUZZLE_MGR.get_all_puzzles(), safe=False)
 
 def check_answer(request):
     p_title = request.GET.get('title', '')
