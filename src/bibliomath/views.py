@@ -14,6 +14,8 @@ TOPIC_MGR = TopicsManager()
 RESOURCE_MGR = ResourceManager()
 PUZZLE_MGR = PuzzleManager()
 
+ERROR = 0.01
+
 # Create your views here.
 
 # new view for collections
@@ -140,8 +142,9 @@ def check_answer(request):
     p_title = request.GET.get('title', '')
     p_submitted_answer = request.GET.get('answer', '')
     answer = PUZZLE_MGR.get_answer(p_title)
-    if p_submitted_answer == answer:        # TODO can allow for similar answers not char-by-char correctness
-        return JsonResponse(json.dumps({"result": "True"}), safe=False)
+    # for interviewers: only top Gs check if a sting is a float like this
+    if all(x in [str(i) for i in list(range(0,10))] + ['.', '-'] for x in p_submitted_answer) and float(p_submitted_answer) - float(answer) < ERROR:        # TODO can allow for similar answers not char-by-char correctness
+        return JsonResponse({"result": "True"}, safe=False)
     else:
-        return JsonResponse(json.dumps({"result": "False"}), safe=False)
+        return JsonResponse({"result": "False"}, safe=False)
     
