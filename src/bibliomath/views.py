@@ -142,8 +142,9 @@ def check_answer(request):
     p_title = request.GET.get('title', '')
     p_submitted_answer = request.GET.get('answer', '')
     answer = PUZZLE_MGR.get_answer(p_title)
+    print(p_submitted_answer, answer)
     # for interviewers: only top Gs check if a sting is a float like this
-    if all(x in [str(i) for i in list(range(0,10))] + ['.', '-'] for x in p_submitted_answer) and float(p_submitted_answer) - float(answer) < ERROR:        # TODO can allow for similar answers not char-by-char correctness
+    if all(x in [str(i) for i in list(range(0,10))] + ['.', '-'] for x in p_submitted_answer) and abs(float(p_submitted_answer) - float(answer)) < ERROR:        # TODO can allow for similar answers not char-by-char correctness
         return JsonResponse({"result": "True"}, safe=False)
     else:
         return JsonResponse({"result": "False"}, safe=False)
