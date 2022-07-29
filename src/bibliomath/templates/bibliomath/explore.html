@@ -13,7 +13,7 @@
     <div class="grid-container">
         {% for topic in topics %}
             <div class="grid-item">
-                <a class="grid-item-link" href="/explore?topic={{ topic.title }}">
+                <a class="grid-item-link" href="{% url 'topic' title=topic.title %}">
                     <h2>{{ topic.title }}</h2>
                 </a>
                 <p>{{ topic.description }}</p> 

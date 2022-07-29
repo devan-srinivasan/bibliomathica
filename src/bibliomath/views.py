@@ -8,6 +8,7 @@ from bibliomath.managers.resource_manager import ResourceManager
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from bibliomath.managers.puzzle_manager import PuzzleManager
+from users.models import Collection
 
 # MANAGERS
 TOPIC_MGR = TopicsManager()
@@ -67,29 +68,19 @@ class ResourceDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 def explore(request):
     # make some request to MongoDB
     # get data and format it accordingly to display
-    topic = request.GET.get('topic','')
-    if not topic == "":
-        # do some database stuff
-        resources = RESOURCE_MGR.get_resources_topic(topic)
-        context = {
-            'title': topic,
-            'resources': resources,
-        }
-        return render(request, 'bibliomath/topic.html', context)
-    else:
-        context = {
-            'topics': TOPIC_MGR.get_topics(),
-        }
-        return render(request, 'bibliomath/explore.html', context)
-
-def collection(request):
-    # make some request to MongoDB
-    # get data and format it accordingly to display
-    resources = []
     context = {
+        'topics': TOPIC_MGR.get_topics(),
+    }
+    return render(request, 'bibliomath/explore.html', context)
+
+def topic(request, title):
+    #topic = request.GET.get('topic','')
+    resources = Resource.objects.filter(topic=title)
+    context = {
+        'title': title,
         'resources': resources,
     }
-    return render(request, 'bibliomath/collection.html', context)
+    return render(request, 'bibliomath/topic.html', context)
 
 
 def create_resource(request):
@@ -148,4 +139,18 @@ def check_answer(request):
         return JsonResponse({"result": "True"}, safe=False)
     else:
         return JsonResponse({"result": "False"}, safe=False)
+
+
+# new view for collection addition
+def addResource(request, id, title):
+    print(id)
+    collection = Collection.objects.filter(user=request.user).first()
+
+    r1 = Resource.objects.filter(id=id).first()
+
+    print(collection)
+    collection.resources.add(r1)
+    collection.save()
+    print(collection)
+    return redirect('topic', title)
     
