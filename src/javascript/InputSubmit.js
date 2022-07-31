@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./InputSubmit.css";
 
 class InputSubmit extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class InputSubmit extends Component {
           onChange={this.handleChange.bind(this)}
           value={this.state.submitted}
           autoComplete="off"
+          text=""
         />
 
         <button

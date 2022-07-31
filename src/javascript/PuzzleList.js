@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Puzzle from "./Puzzle.js";
+import "./PuzzleList.css";
 
 class PuzzleList extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class PuzzleList extends Component {
   render() {
     const puzzleItems = this.state.puzzles.map((puz, index) => (
       <Puzzle
+        className="Puzzle"
         key={index}
         title={puz.title}
         index={index}
@@ -36,7 +38,10 @@ class PuzzleList extends Component {
     ));
     return (
       <div className="PuzzleList">
-        <button onClick={() => this.getPuzzles()}>Load Puzzles</button>
+        <div className="list-header">
+          <h2>Puzzles</h2>
+          <button onClick={() => this.getPuzzles()}>Refresh</button>
+        </div>
         {puzzleItems}
       </div>
     );

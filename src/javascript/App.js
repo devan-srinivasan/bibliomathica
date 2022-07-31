@@ -23,8 +23,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <PuzzleList handleClick={this.handleClick.bind(this)} />
+        <PuzzleList
+          className="PuzzleList"
+          handleClick={this.handleClick.bind(this)}
+        />
         <PuzzleDisplay
+          className="PuzzleDisplay"
           title={this.state.display_puzzle.title}
           question={this.state.display_puzzle.question}
         />
