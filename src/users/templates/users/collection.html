@@ -17,7 +17,7 @@
                         <h4>Completed: </h4>
                         <input type="checkbox" checked="False">
                 </div>
-                    <button class="remove-col-item" onclick="">Remove</button>
+                    <a href="{% url 'removeResource' id=res.id %}">Remove Item from collection</a>
                 </div>
                 <p>{{ res.description }}</p>
             </div>

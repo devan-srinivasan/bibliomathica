@@ -59,3 +59,17 @@ def collection(request):
     }
     return render(request, 'users/collection.html', context)
 
+
+def removeResource(request, id):
+    resources = Collection.objects.filter(user=request.user).values('resources')
+    
+    collection = Collection.objects.filter(user=request.user).first()
+
+    for i in resources:
+        if i['resources'] == id:
+            r1 = Resource.objects.filter(id=id).first()
+
+    collection.resources.remove(r1)
+    collection.save()
+
+    return redirect('collection')
