@@ -14,23 +14,15 @@ class PuzzleList extends Component {
   }
 
   getPuzzles() {
-    //TODO this is temporary will need to actually fetch puzzles
-    var puzzles = [
-      {
-        title: "p1",
-        question: "2+2"
-      },
-      {
-        title: "p2",
-        question: "3+3"
-      },
-      {
-        title: "p3",
-        question: "4+4"
-      }
-    ];
-
-    this.setState({ puzzles: puzzles });
+    fetch("http://localhost:8000/get_all_puzzles/", {
+      method: "GET"
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then((data) => {
+        this.setState({ puzzles: data });
+      });
   }
 
   render() {

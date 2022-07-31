@@ -24,7 +24,13 @@ class InputSubmit extends Component {
           autoComplete="off"
         />
 
-        <button onClick={() => this.props.handleSubmission(this.state.submitted.toString())}>Submit</button>
+        <button
+          onClick={() =>
+            this.props.handleSubmission(this.state.submitted.toString())
+          }
+        >
+          Submit
+        </button>
       </div>
     );
   }

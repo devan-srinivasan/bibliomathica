@@ -9,8 +9,7 @@ class App extends Component {
     this.state = {
       display_puzzle: {
         title: "",
-        question: "",
-        answer: ""
+        question: ""
       }
     };
   }
