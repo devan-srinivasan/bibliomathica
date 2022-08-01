@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./react-stylesheets/InputSubmit.css";
 
 class InputSubmit extends Component {
   constructor(props) {
@@ -22,9 +23,16 @@ class InputSubmit extends Component {
           onChange={this.handleChange.bind(this)}
           value={this.state.submitted}
           autoComplete="off"
+          text=""
         />
 
-        <button onClick={() => this.props.handleSubmission(this.state.submitted.toString())}>Submit</button>
+        <button
+          onClick={() =>
+            this.props.handleSubmission(this.state.submitted.toString())
+          }
+        >
+          Submit
+        </button>
       </div>
     );
   }

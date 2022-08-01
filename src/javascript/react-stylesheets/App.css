@@ -1,0 +1,23 @@
+.App {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    margin-top: 1%;
+    margin-right: auto;
+    width: 80%;
+}
+  
+.PuzzleList {
+    width: 30%;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+}
+  
+.PuzzleDisplay {
+    width: 70%;
+    text-align: left;
+    margin-left: 5%;
+}
+  

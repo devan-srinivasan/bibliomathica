@@ -1,0 +1,10 @@
+button {
+    border-style: solid;
+    border-width: 1px;
+    background-color: #a98de2;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.8;   
+}

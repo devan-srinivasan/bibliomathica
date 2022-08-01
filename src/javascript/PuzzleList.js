@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Puzzle from "./Puzzle.js";
+import "./react-stylesheets/PuzzleList.css";
 
 class PuzzleList extends Component {
   constructor(props) {
@@ -14,28 +15,21 @@ class PuzzleList extends Component {
   }
 
   getPuzzles() {
-    //TODO this is temporary will need to actually fetch puzzles
-    var puzzles = [
-      {
-        title: "p1",
-        question: "2+2"
-      },
-      {
-        title: "p2",
-        question: "3+3"
-      },
-      {
-        title: "p3",
-        question: "4+4"
-      }
-    ];
-
-    this.setState({ puzzles: puzzles });
+    fetch("http://localhost:8000/get_all_puzzles/", {
+      method: "GET"
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then((data) => {
+        this.setState({ puzzles: data });
+      });
   }
 
   render() {
     const puzzleItems = this.state.puzzles.map((puz, index) => (
       <Puzzle
+        className="Puzzle"
         key={index}
         title={puz.title}
         index={index}
@@ -44,7 +38,10 @@ class PuzzleList extends Component {
     ));
     return (
       <div className="PuzzleList">
-        <button onClick={() => this.getPuzzles()}>Load Puzzles</button>
+        <div className="list-header">
+          <h2>Puzzles</h2>
+          <button onClick={() => this.getPuzzles()}>Refresh</button>
+        </div>
         {puzzleItems}
       </div>
     );

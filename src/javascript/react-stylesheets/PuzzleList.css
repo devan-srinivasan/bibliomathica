@@ -1,0 +1,37 @@
+.list-header {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.list-header h2 {
+    margin-right: auto;
+    margin-left: 5%;
+    color: #a98de2;
+}
+
+.list-header button {
+    margin-left: auto;
+    margin-right: 5%;
+    height: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 10px;
+}
+
+.Puzzle button {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    width: 90%;
+    background-color: #a98de2;
+    color: white;
+}
+
+.Puzzle {
+    padding: 5px 0px 5px 0px;
+}
+
+.Puzzle button:hover {
+    opacity: 0.8;
+}
