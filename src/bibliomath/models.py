@@ -1,6 +1,8 @@
 from pydoc import describe
+from uuid import uuid4
 from django.db import models
 from django.urls import reverse
+from djongo import models
 
 # Create your models here.
 class Resource(models.Model):
@@ -16,13 +18,24 @@ class Resource(models.Model):
         return reverse('resource-detail', kwargs={'pk': self.pk})
 
 class Topic(models.Model):
-    title = models.CharField(max_length=50)
+    _id = models.ObjectIdField()
+    title = models.CharField(max_length=50, unique=True)
     description = models.CharField(max_length=200)
 
     def __str__(self) -> str:
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('topic-detail', kwargs={'slug': self.title})
+
 class Puzzle(models.Model):
-    title = models.CharField(max_length=50)
+    _id = models.ObjectIdField()
+    title = models.CharField(max_length=50, unique=True)
     question = models.CharField(max_length=300)
     answer = models.CharField(max_length=300)
+
+    def __str__(self) -> str:
+        return self.title
+    
+    def get_absolute_url(self):
+        return reverse('puzzle-detail', kwargs={'slug': self.title})

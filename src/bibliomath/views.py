@@ -1,8 +1,9 @@
 import json
 from pydoc_data.topics import topics
+from turtle import title
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
-from .models import Resource
+from .models import Resource, Topic, Puzzle
 from bibliomath.managers.topic_manager import TopicsManager
 from bibliomath.managers.resource_manager import ResourceManager
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -19,12 +20,56 @@ ERROR = 0.01
 
 # Create your views here.
 
-# new view for collections
-class ResourceListView(ListView):
-    model = Resource
-    template_name = 'bibliomath/sudo.html'
-    context_object_name = 'resources'
+# new view for sudo
+def sudo(request):
+    topics = Topic.objects.all()
+    resources = Resource.objects.all()
+    puzzles = Puzzle.objects.all()
 
+    context = {
+        'topics': topics,
+        'resources': resources,
+        'puzzles': puzzles,
+    }
+    return render(request, 'bibliomath/sudo.html', context)
+
+
+class TopicDetailView(DetailView):
+    model = Topic
+    slug_field = 'title'
+
+class TopicCreateView(LoginRequiredMixin, CreateView):
+    model = Topic
+    fields = ['title', 'description']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class TopicUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Topic
+    slug_field = 'title'
+    fields = ['title', 'description']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        topic = self.get_object()
+        
+        return True
+
+class TopicDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Topic
+    slug_field = 'title'
+    success_url = '/sudo/'
+
+    def test_func(self):
+        topic = self.get_object()
+        
+        return True
+    
 class ResourceDetailView(DetailView):
     model = Resource
 
@@ -48,11 +93,6 @@ class ResourceUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         resource = self.get_object()
         
         return True
-    # def test_func(self):
-    #     resource = self.get_object()
-    #     if self.request.user == resource.author:
-    #         return True
-    #     return False
 
 class ResourceDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Resource
@@ -62,7 +102,43 @@ class ResourceDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         resource = self.get_object()
         
         return True
-    
+
+class PuzzleDetailView(DetailView):
+    model = Puzzle
+    slug_field = 'title'
+
+class PuzzleCreateView(LoginRequiredMixin, CreateView):
+    model = Puzzle
+    fields = ['title', 'question', 'answer']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class PuzzleUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Puzzle
+    slug_field = 'title'
+    fields = ['title', 'question', 'answer']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        puzzle = self.get_object()
+        
+        return True
+
+class PuzzleDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Puzzle
+    slug_field = 'title'
+    success_url = '/sudo/'
+
+    def test_func(self):
+        puzzle = self.get_object()
+        
+        return True
+  
 # ends here
 
 def explore(request):

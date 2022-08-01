@@ -5,18 +5,47 @@
     <link rel="stylesheet" href="{% static 'bibliomath/collection.css' %}">
 {% endblock stylesheets %}
 {% block content %}
+    <div> 
+        <h2>List of Resources</h2> 
+        <a class="btn btn-secondary" href="{% url 'resource-create' %}">Create new resource</a> 
+    </div>
     <div class="grid-container">
-        <div>
-            <a class="btn btn-secondary" href="{% url 'resource-create' %}">Add resource</a>
-        </div>
         {% for res in resources %}
             <div class="grid-item">
                 <div class="collection-item-header">
-                    <a class="grid-item-link" href="{% url 'resource-detail' res.id %}">
+                    <a class="grid-item-link" href="{% url 'resource-detail' pk=res.id %}">
                         <h2 class="grid-item-link">{{ res.title }}</h2>
                     </a>
                 </div>
                 <p>{{ res.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <div> 
+        <h2>List of Topics</h2> 
+        <a class="btn btn-secondary" href="{% url 'topic-create' %}">Create new topic</a> 
+    </div>
+    <div class="grid-container">
+        {% for topic in topics %}
+            <div class="grid-item">
+                <a class="grid-item-link" href="{% url 'topic-detail' topic.title %}">
+                    <h2>{{ topic.title }}</h2>
+                </a>
+                <p>{{ topic.description }}</p> 
+            </div>
+        {% endfor %}
+    </div>
+    <div> 
+        <h2>List of Puzzles</h2> 
+        <a class="btn btn-secondary" href="{% url 'puzzle-create' %}">Create new puzzle</a> 
+    </div>
+    <div class="grid-container">
+        {% for puzzle in puzzles %}
+            <div class="grid-item">
+                <a class="grid-item-link" href="{% url 'puzzle-detail' puzzle.title %}">
+                    <h2>{{ puzzle.title }}</h2>
+                </a>
+                <p>{{ puzzle.question }}</p> 
             </div>
         {% endfor %}
     </div>
