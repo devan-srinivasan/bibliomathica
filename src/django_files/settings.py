@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-449(bn9*rk(!(rtmz58nrici&u$o_w+3oa*$16m74t-beu7^o!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['bibliomathica.com', 'www.bibliomathica.com']
+ALLOWED_HOSTS = ['bibliomathica.com', 'www.bibliomathica.com', 'localhost']
 
 CORS_ALLOW_ALL_ORIGINS = True   #TODO for testing purposes
 
