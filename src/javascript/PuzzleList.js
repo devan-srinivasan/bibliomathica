@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Puzzle from "./Puzzle.js";
-import "./PuzzleList.css";
+import "./react-stylesheets/PuzzleList.css";
 
 class PuzzleList extends Component {
   constructor(props) {

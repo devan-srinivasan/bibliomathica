@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./react-stylesheets/App.css";
 import PuzzleList from "./PuzzleList.js";
 import PuzzleDisplay from "./PuzzleDisplay.js";
 

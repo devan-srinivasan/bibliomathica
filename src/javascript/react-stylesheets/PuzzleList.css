@@ -28,6 +28,10 @@
     color: white;
 }
 
+.Puzzle {
+    padding: 5px 0px 5px 0px;
+}
+
 .Puzzle button:hover {
     opacity: 0.8;
 }
