@@ -1,6 +1,5 @@
 import json
 from pydoc_data.topics import topics
-from turtle import title
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .models import Resource, Topic, Puzzle
