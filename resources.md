@@ -32,3 +32,18 @@ React tutorial
 ```sh
 https://reactjs.org/tutorial/tutorial.html
 ```
+
+## Deploying Django on Linux with NGINX and uWSGi
+Tutorial blog:
+```sh
+https://tonyteaches.tech/django-nginx-uwsgi-tutorial/
+```
+Tutorial video:
+```sh
+https://www.youtube.com/watch?v=ZpR1W-NWnp4
+```
+another helpful and similar guide:
+```sh
+https://uwsgi-docs.readthedocs.io/en/latest/tutorials/Django_and_nginx.html
+```
+
