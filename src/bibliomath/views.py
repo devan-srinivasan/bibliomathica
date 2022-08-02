@@ -7,6 +7,7 @@ from bibliomath.managers.topic_manager import TopicsManager
 from bibliomath.managers.resource_manager import ResourceManager
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.decorators import login_required
 from bibliomath.managers.puzzle_manager import PuzzleManager
 from users.models import Collection
 
@@ -148,61 +149,35 @@ def explore(request):
     }
     return render(request, 'bibliomath/explore.html', context)
 
+@login_required
 def topic(request, title):
-    #topic = request.GET.get('topic','')
-    resources = Resource.objects.filter(topic=title)
+    resources_in = []
+    resources_out = []
+    collection_ids = []
+
+    collection_res = Collection.objects.filter(user=request.user).values('resources')
+    for res in collection_res:
+        collection_ids.append(res['resources'])
+
+    topic_res = Resource.objects.filter(topic=title).values('id')
+
+    for res in topic_res:
+        if res['id'] in collection_ids:
+            resources_in.extend(Resource.objects.filter(id=res['id']))
+        else:
+            resources_out.extend(Resource.objects.filter(id=res['id']))
+
     context = {
         'title': title,
-        'resources': resources,
+        'resources_in': resources_in,
+        'resources_out': resources_out,
     }
     return render(request, 'bibliomath/topic.html', context)
 
 
-def create_resource(request):
-    res_topic = request.POST.get('topic', '')
-    res_title = request.POST.get('title', '')
-    res_description = request.POST.get('description', '')
-    res_link = request.POST.get('link', '')
-    result = RESOURCE_MGR.add_resource({'topic': res_topic, 'title': res_title, 'description': res_description, 'link': res_link})
-    if result:
-        return redirect(f'/explore?topic={res_topic}')
-    else:
-        context = {
-            'error': 'faulty/duplicate resource'
-        }
-        return render(request, 'bibliomath/error.html', context)
-
-def create_topic(request):
-    top_title = request.POST.get('title', '')
-    top_description = request.POST.get('description', '')
-    result = TOPIC_MGR.add_topic({'title': top_title, 'description': top_description})
-    if result:
-        context = {
-            'topics': TOPIC_MGR.get_topics(),
-        }
-        return render(request, 'bibliomath/explore.html', context)
-    else:
-        context = {
-            'error': 'attempt to add duplicate topic'
-        }
-        return render(request, 'bibliomath/error.html', context)
-
-# TODO delete eventually? or style better
-def create_puzzle(request):
-    p_title = request.POST.get('title', '')
-    p_question = request.POST.get('question', '')
-    p_answer = request.POST.get('answer', '')
-    result = PUZZLE_MGR.add_puzzle({'title': p_title, 'question': p_question, 'answer': p_answer})
-    if result:
-        return render(request, 'bibliomath/puzzle.html')
-    else:
-        context = {
-            'error': 'attempt to add duplicate puzzle'
-        }
-        return render(request, 'bibliomath/error.html', context)
-
 def get_all_puzzles(request):
     return JsonResponse(PUZZLE_MGR.get_all_puzzles(), safe=False)
+
 
 def check_answer(request):
     p_title = request.GET.get('title', '')
@@ -218,14 +193,11 @@ def check_answer(request):
 
 # new view for collection addition
 def addResource(request, id, title):
-    print(id)
     collection = Collection.objects.filter(user=request.user).first()
 
     r1 = Resource.objects.filter(id=id).first()
 
-    print(collection)
     collection.resources.add(r1)
     collection.save()
-    print(collection)
     return redirect('topic', title)
     

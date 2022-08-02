@@ -6,9 +6,7 @@
 {% endblock stylesheets %}
 {% block content %}
     <div>
-        <button class="create" onclick="location.href='#create-resource'">
-            Add Resource/Topic
-        </button>
+        <a class="btn btn-secondary" href="{% url 'resource-create' %}">Add resource</a> 
     </div>
     <div class="grid-container">
         {% for topic in topics %}
