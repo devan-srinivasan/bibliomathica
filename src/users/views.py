@@ -42,7 +42,7 @@ def profile(request):
     }
     return render(request, 'users/profile.html', context)
 
-
+@login_required
 def collection(request):
     
     collection = Collection.objects.filter(user=request.user)

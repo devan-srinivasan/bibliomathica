@@ -6,19 +6,28 @@
 {% endblock stylesheets %}
 {% block content %}
     <h2>{{ title }}</h2>
-    <div>
-        <button class="create" onclick="location.href='/explore#create-resource'">
-            Add Resource/Topic
-        </button>
-    </div>
+    <div> <h2>These resources are not in your collection</h2></div>
     <div class="grid-container">
-        {% for res in resources %}
+        {% for res in resources_out %}
             <div class="grid-item">
                 <div class="collection-item-header">
                     <a class="grid-item-link" href="{{ res.link }}">
                         <h2 class="grid-item-link">{{ res.title }}</h2>
                     </a>
                     <div><a href="{% url 'addResource' id=res.id title=title %}">Add item to Collection</a></div>
+                </div>
+                <p>{{ res.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <div> <h2>These resources are already your collection</h2></div>
+    <div class="grid-container">
+        {% for res in resources_in %}
+            <div class="grid-item">
+                <div class="collection-item-header">
+                    <a class="grid-item-link" href="{{ res.link }}">
+                        <h2 class="grid-item-link">{{ res.title }}</h2>
+                    </a>
                 </div>
                 <p>{{ res.description }}</p>
             </div>
