@@ -1,10 +1,14 @@
 button {
     border-style: solid;
     border-width: 1px;
-    background-color: #a98de2;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 button:hover {
     opacity: 0.8;   
+}
+
+InputSubmit input {
+    margin-top: 1%;
 }

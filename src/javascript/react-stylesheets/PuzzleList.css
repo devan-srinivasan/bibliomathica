@@ -7,7 +7,7 @@
 .list-header h2 {
     margin-right: auto;
     margin-left: 5%;
-    color: #a98de2;
+    color: black;
 }
 
 .list-header button {
@@ -24,8 +24,8 @@
     border-width: 1px;
     border-radius: 10px;
     width: 90%;
-    background-color: #a98de2;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 .Puzzle {
