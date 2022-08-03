@@ -1,10 +1,18 @@
-.completed-item-container, .collection-item-header {
+.completed-item-container, .collection-item-header, .col-header-right {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.completed-item-container{
+.completed-item-container, .col-header-right{
+    justify-content: space-evenly;
+}
+
+.completed-item-container {
+    margin-right: 5%;
+}
+
+.col-header-right {
     margin-left: auto;
 }
 
