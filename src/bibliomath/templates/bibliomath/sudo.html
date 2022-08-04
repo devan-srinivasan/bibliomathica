@@ -3,6 +3,7 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{% static 'bibliomath/gridstyles.css' %}">
     <link rel="stylesheet" href="{% static 'bibliomath/sudo.css' %}">
+    <link rel="stylesheet" href="{% static 'bibliomath/collection.css' %}">
 {% endblock stylesheets %}
 {% block content %}
     <div> 
@@ -27,9 +28,17 @@
         {% for res in resources %}
             <div class="grid-item">
                 <div class="collection-item-header">
-                    <a class="grid-item-link" href="{% url 'resource-detail' pk=res.id %}">
-                        <h4 class="grid-item-link">{{ res.title }}</h4>
-                    </a>
+                    <div class="col-header-left">
+                        <a class="grid-item-link" href="#">
+                            <h3 class="grid-item-link">{{ res.title }}</h3>
+                        </a>
+                        <h6>{{ res.topic }}</h6>
+                    </div>
+                    <div class="col-header-right">
+                        <div style="margin-right: 5%;">
+                            <a class="btn btn-secondary" href="{% url 'removeResource' id=res.id %}">Remove</a>
+                        </div> 
+                    </div> 
                 </div>
                 <p>{{ res.description }}</p>
             </div>
