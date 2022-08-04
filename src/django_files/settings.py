@@ -158,4 +158,4 @@ LOGIN_REDIRECT_URL = 'explore'
 LOGIN_URL = 'login'
 
 
-django_on_heroku.settings(locals())
+django_on_heroku.settings(locals(), databases=False)
