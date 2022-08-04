@@ -1,14 +1,15 @@
-button {
-    border-style: solid;
-    border-width: 1px;
-    background-color: white;
-    color: black;
+.InputSubmit {
+    margin-top: 1%;
+}
+
+.InputSubmit button {
+    margin-left: 1%;
 }
 
 button:hover {
     opacity: 0.8;   
 }
 
-InputSubmit input {
+.InputSubmit input {
     margin-top: 1%;
 }

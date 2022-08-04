@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import InputSubmit from "./InputSubmit.js";
+import "./react-stylesheets/PuzzleDisplay.css";
 
 class PuzzleDisplay extends Component {
   constructor(props) {
@@ -7,15 +8,26 @@ class PuzzleDisplay extends Component {
     this.state = {
       correct_answer: "init",
       title: this.props.title,
-      question: this.props.question
+      question: this.props.question,
+      last_submission: ""
     };
     this.handleSubmission = this.handleSubmission.bind(this);
   }
 
-  handleSubmission(submission) {
-    fetch(
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.title !== prevProps.title) {
+      this.setState({
+        correct_answer: "init",
+        title: this.props.title,
+        question: this.props.question
+      });
+    }
+  }
+
+  async handleSubmission(submission) {
+    await fetch(
       "http://localhost:8000/check_answer/?title=" +
-        this.props.title +
+        this.state.title +
         "&answer=" +
         submission,
       {
@@ -28,23 +40,35 @@ class PuzzleDisplay extends Component {
       .then((data) => {
         this.setState({ correct_answer: data.result });
       });
+    this.setState({ last_submission: submission });
   }
 
   render() {
     var result;
-    console.log(this.state.correct_answer);
     if (this.state.correct_answer === "True") {
-      result = <p>correct!</p>;
+      result = (
+        <>
+          <p className="correct">{this.state.last_submission}: correct!</p>
+        </>
+      );
     } else if (this.state.correct_answer === "False") {
-      result = <p>wrong!</p>;
+      result = (
+        <>
+          <p className="wrong">{this.state.last_submission}: wrong!</p>
+        </>
+      );
     } else if (this.state.correct_answer === "init") {
-      result = <p>submit an answer!</p>;
+      result = (
+        <>
+          <p className="init">submit an answer</p>
+        </>
+      );
     }
     return (
       <div className="PuzzleDisplay">
-        <h3>Puzzle: {this.props.title}</h3>
+        <h3>Puzzle: {this.state.title}</h3>
         <h5>
-          <u>Question:</u> {this.props.question}
+          <u>Question:</u> {this.state.question}
         </h5>
         <h5>
           <u>Answer:</u>
