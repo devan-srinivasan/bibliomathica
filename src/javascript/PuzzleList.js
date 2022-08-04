@@ -40,7 +40,7 @@ class PuzzleList extends Component {
       <div className="PuzzleList">
         <div className="list-header">
           <h2>Puzzles</h2>
-          <button onClick={() => this.getPuzzles()}>Refresh</button>
+          <button className="btn btn-secondary" onClick={() => this.getPuzzles()}>Refresh</button>
         </div>
         {puzzleItems}
       </div>

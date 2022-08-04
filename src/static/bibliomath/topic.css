@@ -1,29 +1,9 @@
 .collection-item-header {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
 }
 
-.add-col-item:hover {
-    background-color: #c9b8ed;
-}
-
-.add-col-item {
-    border-radius: 10px;
-    background-color: white;
-    color: black;
+.add-col-btn {
     margin-left: auto;
-    font-size: 14px;
-}
-
-.create {
-    border-radius: 10px;
-    background-color: #bea9e9;
-    color: white;
-    font-size: 16px;
-    margin-top: 10px;
-}
-
-.create:hover {
-    background-color: #9179c3;
 }

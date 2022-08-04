@@ -27,6 +27,7 @@ class InputSubmit extends Component {
         />
 
         <button
+          className="btn btn-secondary"
           onClick={() =>
             this.props.handleSubmission(this.state.submitted.toString())
           }

@@ -5,19 +5,26 @@
     <link rel="stylesheet" href="{% static 'bibliomath/collection.css' %}">
 {% endblock stylesheets %}
 {% block content %}
-<div> This is the {{ collection.first }} </div>
+    <h4 style="margin-top: 1%;"> {{ collection.first }} </h4>
     <div class="grid-container">
         {% for res in resources %}
             <div class="grid-item">
                 <div class="collection-item-header">
-                    <a class="grid-item-link" href="#">
-                        <h2 class="grid-item-link">{{ res.title }}</h2>
-                    </a>
-                    <div class="completed-item-container">
-                        <h4>Completed: </h4>
-                        <input type="checkbox" checked="False">
-                </div>
-                    <a href="{% url 'removeResource' id=res.id %}">Remove Item from collection</a>
+                    <div class="col-header-left">
+                        <a class="grid-item-link" href="#">
+                            <h3 class="grid-item-link">{{ res.title }}</h3>
+                        </a>
+                        <h6>{{ res.topic }}</h6>
+                    </div>
+                    <div class="col-header-right">
+                        <!-- <div style="visibility: hidden;" class="completed-item-container">
+                            <h6>Completed: </h6>
+                            <input type="checkbox" checked="False">
+                        </div> -->
+                        <div style="margin-right: 5%;">
+                            <a class="btn btn-secondary" href="{% url 'removeResource' id=res.id %}">Remove</a>
+                        </div> 
+                    </div> 
                 </div>
                 <p>{{ res.description }}</p>
             </div>
