@@ -1,6 +1,12 @@
 const web_config = {
-    address: 'http://localhost',
-    port: '8000',
+    mode: "dev",
+    dev: {
+        address: 'http://localhost',
+        port: '8000',
+    },
+    prod: {
+        address: 'www.bibliomathica.com',
+    }
 }
 
 export default web_config;

@@ -26,8 +26,13 @@ class PuzzleDisplay extends Component {
   }
 
   async handleSubmission(submission) {
+    if (web_config.mode == "dev") {
+      host_address = web_config.dev.address + ":" + web_config.dev.port;
+    } else {
+      host_address = web_config.prod.address;
+    }
     await fetch(
-      web_config.address + ":" + web_config.port + "/check_answer/?title=" +
+       host_address + "/check_answer/?title=" +
         this.state.title +
         "&answer=" +
         submission,
