@@ -29,4 +29,8 @@ npm install
 **Development**<br>
 In `src/javascript/config.js` modify the `web_config.dev` object with the address and port you are hosting the django server on. Also make sure that `mode` is set to `dev`. <br><br>
 
-Please note that when modifying anything in the javascript folder (including `config.js`), you need to run `npm run dev` from the `src` folder to recompile it otherwise it won't show up on the server. This is since the django template pulls the contents from a webpack bundle, not the javascript files themselves. Then start the web application by running `python manage.py runserver [PORT=8000]`. You may specify a port, it will be 8000 by default. Note if you want to run on a specific port you must set the `port` attribute of `web_config.dev` in the `config.js` file.
+Please note that when modifying anything in the javascript folder (including `config.js`), you need to run `npm run dev` from the `src` folder to recompile it otherwise it won't show up on the server. This is since the django template pulls the contents from a webpack bundle, not the javascript files themselves. Then start the web application by running 
+```sh
+python manage.py runserver [PORT=8000]
+```
+You may specify a port, it will be 8000 by default. Note if you want to run on a specific port you must set the `port` attribute of `web_config.dev` in the `config.js` file.
