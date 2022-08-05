@@ -31,6 +31,6 @@ In `src/javascript/config.js` modify the `web_config.dev` object with the addres
 
 Please note that when modifying anything in the javascript folder (including `config.js`), you need to run `npm run dev` from the `src` folder to recompile it otherwise it won't show up on the server. This is since the django template pulls the contents from a webpack bundle, not the javascript files themselves. Then start the web application by running 
 ```sh
-python manage.py runserver [PORT=8000]
+python manage.py runserver [PORT]
 ```
-You may specify a port, it will be 8000 by default. Note if you want to run on a specific port you must set the `port` attribute of `web_config.dev` in the `config.js` file.
+You may specify a port or leave it at 8000 by default. Note if you want to run on a specific port you must set the `port` attribute of `web_config.dev` in the `config.js` file and recompile via webpack (using `npm run dev`) otherwise the puzzle page will not be functional.
