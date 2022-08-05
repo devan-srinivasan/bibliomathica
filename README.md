@@ -26,5 +26,7 @@ Then we will install all frontend packages with the following command (from pack
 npm install
 ```
 
-**Development Config**<br>
-In `src/javascript/config.js` modify the `web_config` object with the address and port you are hosting the django server on.
+**Development**<br>
+In `src/javascript/config.js` modify the `web_config.dev` object with the address and port you are hosting the django server on. Also make sure that `mode` is set to `dev`. <br><br>
+
+To modify the react contents, run `npm run dev` from the `src` folder and it will re-compile the react components and bundle it using webpack. Then start the web application by running `python manage.py runserver [PORT=8000]`. You may specify a port, it will be 8000 by default. Note if you want to run on a specific port you must set the `port` attribute of `web_config.dev` in the `config.js` file.

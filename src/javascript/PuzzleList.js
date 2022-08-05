@@ -16,7 +16,14 @@ class PuzzleList extends Component {
   }
 
   getPuzzles() {
-    fetch(web_config.address + ":" + web_config.port + "/get_all_puzzles/", {
+    var host_address;
+    if (web_config.mode == "dev") {
+      host_address = web_config.dev.address + ":" + web_config.dev.port;
+    } else {
+      host_address = web_config.prod.address;
+    }
+
+    fetch(host_address + "/get_all_puzzles/", {
       method: "GET"
     })
       .then(function (response) {
