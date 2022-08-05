@@ -16,6 +16,7 @@ class PuzzleList extends Component {
   }
 
   getPuzzles() {
+    var host_address;
     if (web_config.mode == "dev") {
       host_address = web_config.dev.address + ":" + web_config.dev.port;
     } else {
