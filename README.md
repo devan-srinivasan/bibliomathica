@@ -25,3 +25,6 @@ Then we will install all frontend packages with the following command (from pack
 ```sh
 npm install
 ```
+
+**Development Config**<br>
+In `src/javascript/config.js` modify the `web_config` object with the address and port you are hosting the django server on.

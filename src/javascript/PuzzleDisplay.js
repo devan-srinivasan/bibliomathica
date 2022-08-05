@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import InputSubmit from "./InputSubmit.js";
 import "./react-stylesheets/PuzzleDisplay.css";
+import web_config from "./config.js";
 
 class PuzzleDisplay extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class PuzzleDisplay extends Component {
 
   async handleSubmission(submission) {
     await fetch(
-      "http://localhost:8000/check_answer/?title=" +
+      web_config.address + ":" + web_config.port + "/check_answer/?title=" +
         this.state.title +
         "&answer=" +
         submission,

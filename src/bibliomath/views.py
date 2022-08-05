@@ -174,6 +174,9 @@ def topic(request, title):
     }
     return render(request, 'bibliomath/topic.html', context)
 
+def puzzle(request):
+    return render(request, 'bibliomath/puzzle.html')
+
 
 def get_all_puzzles(request):
     return JsonResponse(PUZZLE_MGR.get_all_puzzles(), safe=False)

@@ -25,7 +25,7 @@ urlpatterns = [
     re_path(f'sudo/update-puzzle/{REGEX_PATTERN}/', PuzzleUpdateView.as_view(), name='puzzle-update'),
     re_path(f'sudo/delete-puzzle/{REGEX_PATTERN}/', PuzzleDeleteView.as_view(), name='puzzle-delete'),
 
-    path('puzzle/', TemplateView.as_view(template_name='puzzle.html'), name='puzzle'),
+    path('puzzle/', views.puzzle, name='puzzle'),
     path('explore/', views.explore, name='explore'),
     path('explore/<str:title>/', views.topic, name='topic'),
     path('get_all_puzzles/', views.get_all_puzzles, name='get_all_puzzles'),
