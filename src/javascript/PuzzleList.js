@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Puzzle from "./Puzzle.js";
 import "./react-stylesheets/PuzzleList.css";
+import web_config from "./config.js";
 
 class PuzzleList extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class PuzzleList extends Component {
   }
 
   getPuzzles() {
-    fetch("http://localhost:8000/get_all_puzzles/", {
+    fetch(web_config.address + ":" + web_config.port + "/get_all_puzzles/", {
       method: "GET"
     })
       .then(function (response) {
