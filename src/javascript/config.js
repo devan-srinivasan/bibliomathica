@@ -5,7 +5,7 @@ const web_config = {
         port: '8000',
     },
     prod: {
-        address: 'www.bibliomathica.com',
+        address: 'http://www.bibliomathica.com',
     }
 }
 
