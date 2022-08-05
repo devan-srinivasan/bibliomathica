@@ -1,5 +1,5 @@
 const web_config = {
-    mode: "dev",
+    mode: "prod",
     dev: {
         address: 'http://localhost',
         port: '8000',

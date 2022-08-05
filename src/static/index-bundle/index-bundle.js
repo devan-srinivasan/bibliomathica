@@ -66,7 +66,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar web_config = {\n  mode: \"prod\",\n  dev: {\n    address: 'http://localhost',\n    port: '8000'\n  },\n  prod: {\n    address: 'www.bibliomathica.com'\n  }\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (web_config);\n\n//# sourceURL=webpack://backend/./javascript/config.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar web_config = {\n  mode: \"prod\",\n  dev: {\n    address: 'http://localhost',\n    port: '8000'\n  },\n  prod: {\n    address: 'http://www.bibliomathica.com'\n  }\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (web_config);\n\n//# sourceURL=webpack://backend/./javascript/config.js?");
 
 /***/ }),
 
