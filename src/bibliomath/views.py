@@ -1,4 +1,5 @@
 import json
+from os import access, link
 from pydoc_data.topics import topics
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
@@ -25,10 +26,21 @@ def sudo(request):
     topics = Topic.objects.all()
     resources = Resource.objects.all()
     puzzles = Puzzle.objects.all()
+    new_resources = []
+    for res in resources:
+        new_res = {
+        'color': Topic.objects.filter(title=res.topic).values("color").first().get('color'),
+        'title': res.title,
+        'description': res.description,
+        'link': res.link,
+        'topic': res.topic,
+        'id': res.id
+        }
+        new_resources.append(new_res)
 
     context = {
         'topics': topics,
-        'resources': resources,
+        'resources': new_resources,
         'puzzles': puzzles,
     }
     return render(request, 'bibliomath/sudo.html', context)
@@ -40,7 +52,7 @@ class TopicDetailView(DetailView):
 
 class TopicCreateView(LoginRequiredMixin, CreateView):
     model = Topic
-    fields = ['title', 'description']
+    fields = ['title', 'description', 'color']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -49,7 +61,7 @@ class TopicCreateView(LoginRequiredMixin, CreateView):
 class TopicUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Topic
     slug_field = 'title'
-    fields = ['title', 'description']
+    fields = ['title', 'description', 'color']
 
     def form_valid(self, form):
         form.instance.author = self.request.user

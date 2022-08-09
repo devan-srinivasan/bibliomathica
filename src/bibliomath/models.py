@@ -3,6 +3,7 @@ from uuid import uuid4
 from django.db import models
 from django.urls import reverse
 from djongo import models
+from colorfield.fields import ColorField
 
 # Create your models here.
 class Resource(models.Model):
@@ -21,7 +22,8 @@ class Topic(models.Model):
     _id = models.ObjectIdField()
     title = models.CharField(max_length=50, unique=True)
     description = models.CharField(max_length=200)
-
+    color = ColorField(default='#FF0000')
+    
     def __str__(self) -> str:
         return self.title
 

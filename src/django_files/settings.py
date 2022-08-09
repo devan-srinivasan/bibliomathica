@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'bibliomath',
     'users.apps.UsersConfig',
     'crispy_forms',
-    'corsheaders'
+    'corsheaders',
+    'colorfield',
 ]
 
 MIDDLEWARE = [

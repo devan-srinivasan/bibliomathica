@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from users.models import Collection
-from bibliomath.models import Resource
+from bibliomath.models import Resource, Topic
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.views.generic import ListView
 
@@ -52,10 +52,20 @@ def collection(request):
         if Resource.objects.filter(id=res['resources']).first() is not None:
             resources.extend(Resource.objects.filter(id=res['resources']))
 
-
+    new_resources = []
+    for res in resources:
+        new_res = {
+        'color': Topic.objects.filter(title=res.topic).values("color").first().get('color'),
+        'title': res.title,
+        'description': res.description,
+        'link': res.link,
+        'topic': res.topic,
+        'id': res.id
+        }
+        new_resources.append(new_res)
     context = {
         'collection': collection,
-        'resources': resources,
+        'resources': new_resources,
     }
     return render(request, 'users/collection.html', context)
 
