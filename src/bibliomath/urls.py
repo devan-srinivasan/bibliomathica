@@ -20,12 +20,12 @@ urlpatterns = [
     re_path(f'sudo/update-topic/{REGEX_PATTERN}/', TopicUpdateView.as_view(), name='topic-update'),
     re_path(f'sudo/delete-topic/{REGEX_PATTERN}/', TopicDeleteView.as_view(), name='topic-delete'),
     #sudo puzzles
-    re_path(f'sudo/puzzle/{REGEX_PATTERN}/', PuzzleDetailView.as_view(), name='puzzle-detail'),
-    path('sudo/new-puzzle/', PuzzleCreateView.as_view(), name='puzzle-create'),
-    re_path(f'sudo/update-puzzle/{REGEX_PATTERN}/', PuzzleUpdateView.as_view(), name='puzzle-update'),
-    re_path(f'sudo/delete-puzzle/{REGEX_PATTERN}/', PuzzleDeleteView.as_view(), name='puzzle-delete'),
+    # re_path(f'sudo/puzzle/{REGEX_PATTERN}/', PuzzleDetailView.as_view(), name='puzzle-detail'),
+    # path('sudo/new-puzzle/', PuzzleCreateView.as_view(), name='puzzle-create'),
+    # re_path(f'sudo/update-puzzle/{REGEX_PATTERN}/', PuzzleUpdateView.as_view(), name='puzzle-update'),
+    # re_path(f'sudo/delete-puzzle/{REGEX_PATTERN}/', PuzzleDeleteView.as_view(), name='puzzle-delete'),
 
-    path('puzzle/', views.puzzle, name='puzzle'),
+    # path('puzzle/', views.puzzle, name='puzzle'),
     path('explore/', views.explore, name='explore'),
     path('explore/<str:title>/', views.topic, name='topic'),
     path('get_all_puzzles/', views.get_all_puzzles, name='get_all_puzzles'),

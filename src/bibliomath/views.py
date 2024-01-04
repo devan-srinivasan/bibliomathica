@@ -49,6 +49,7 @@ def sudo(request):
 class TopicDetailView(DetailView):
     model = Topic
     slug_field = 'title'
+    fields = ['title', 'description', 'color']
 
 class TopicCreateView(LoginRequiredMixin, CreateView):
     model = Topic
@@ -183,6 +184,7 @@ def topic(request, title):
         'title': title,
         'resources_in': resources_in,
         'resources_out': resources_out,
+        'color': Topic.objects.filter(title=title)[0].color
     }
     return render(request, 'bibliomath/topic.html', context)
 

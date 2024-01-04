@@ -14,7 +14,6 @@
                         <a class="grid-item-link" href="{{ res.link }}">
                             <h3 class="grid-item-link">{{ res.title }}</h3>
                         </a>
-                        <h6 style="background-color: {{res.color}}">{{ res.topic }}</h6>
                     </div>
                     <div class="col-header-right">
                         <!-- <div style="visibility: hidden;" class="completed-item-container">
@@ -26,6 +25,7 @@
                         </div> 
                     </div> 
                 </div>
+                <h6 style="background-color: {{res.color}}; width: fit-content; padding: 7px; border-radius: 5px;">{{ res.topic }}</h6>
                 <p>{{ res.description }}</p>
             </div>
         {% endfor %}

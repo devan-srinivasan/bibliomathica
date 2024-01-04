@@ -32,24 +32,10 @@
                         <a class="grid-item-link" href="{% url 'resource-detail' res.id %}">
                             <h3 class="grid-item-link">{{ res.title }}</h3>
                         </a>
-                        <h6 style="background-color: {{res.color}}">{{ res.topic }}</h6>
                     </div>
                 </div>
+                <h6 style="background-color: {{res.color}}; width: fit-content; padding: 7px; border-radius: 5px;">{{ res.topic }}</h6>
                 <p>{{ res.description }}</p>
-            </div>
-        {% endfor %}
-    </div>
-    <div> 
-        <h2 class="sudo-header">List of Puzzles</h2> 
-        <a class="btn btn-secondary" href="{% url 'puzzle-create' %}">Create new puzzle</a> 
-    </div>
-    <div class="grid-container">
-        {% for puzzle in puzzles %}
-            <div class="grid-item">
-                <a class="grid-item-link" href="{% url 'puzzle-detail' puzzle.title %}">
-                    <h4>{{ puzzle.title }}</h4>
-                </a>
-                <p>{{ puzzle.question }}</p> 
             </div>
         {% endfor %}
     </div>

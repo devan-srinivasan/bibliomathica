@@ -15,6 +15,7 @@ def jsonify_topic(query_set):
         return_list.append({
             'title': item.title,
             'description': item.description,
+            'color': str(item.color),
         })
     return return_list
 

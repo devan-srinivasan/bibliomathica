@@ -16,11 +16,12 @@
     border-radius: 10px;
     border-width: 2px;
     background-color: white;
-    padding: 1%;
+    padding: 10px;
 }
 
 .grid-item-link:hover {
-    color: #9e7edf;
+    color: #666666;
+    /* color: #9e7edf; */
 }
 
 .grid-item-link {
