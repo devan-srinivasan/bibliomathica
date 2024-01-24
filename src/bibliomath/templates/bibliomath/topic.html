@@ -6,7 +6,7 @@
 {% endblock stylesheets %}
 {% block content %}
     <h2 class="topic-title" style="background-color: {{ color }};">{{ title }}</h2>
-    <div> <h4>Not in your collection</h4></div>
+    <div> <h4>Other Resources</h4></div>
     <div class="grid-container">
         {% for res in resources_out %}
             <div class="grid-item">
@@ -20,7 +20,7 @@
             </div>
         {% endfor %}
     </div>
-    <div style="margin-top: 1%;"> <h4>In your collection</h4></div>
+    <div style="margin-top: 1%;"> <h4>Your Collection:</h4></div>
     <div class="grid-container">
         {% for res in resources_in %}
             <div class="grid-item">

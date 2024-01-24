@@ -6,8 +6,7 @@
     align-items: center;
     flex-direction: row;
     background-color: white;
-    width: 96%;
-    margin: 40px 50px 0px 50px;
+    margin: 50px 40px 0px 40px;
 }
 
 .content {
@@ -44,7 +43,7 @@
 }
 
 .nav-item a:hover {
-    color:#a98de2;
+    color:#666666;
 }
 
 /* .nav-item:hover {
