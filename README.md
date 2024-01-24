@@ -18,18 +18,19 @@ Then run the following command from `src` to install all the required dependenci
 ```sh
 pipenv install -r requirements.txt
 ```
-**Javascript**<br>
+<!-- **Javascript**<br>
 Within the src folder we are going to install a few things. First you will need `node` and `npm` (node package manager). Installing these may vary depending on your machine, on Linux run the following in the Terminal:<br>
 &emsp;`sudo apt install nodejs` (the `npm` binary comes along with `nodejs`)<br>Then we will use `npm` to install `webpack`, `babel` and `react`. These can all installed with the following commands.<br>
 Then we will install all frontend packages with the following command (from package.json)
 ```sh
 npm install
-```
+``` -->
 
 **Development**<br>
-In `src/javascript/config.js` modify the `web_config.dev` object with the address and port you are hosting the django server on. Also make sure that `mode` is set to `dev`. <br><br>
+<!-- In `src/javascript/config.js` modify the `web_config.dev` object with the address and port you are hosting the django server on. Also make sure that `mode` is set to `dev`. <br><br>
 
-Please note that when modifying anything in the javascript folder (including `config.js`), you need to run `npm run dev` from the `src` folder to recompile it otherwise it won't show up on the server. This is since the django template pulls the contents from a webpack bundle, not the javascript files themselves. Then start the web application by running 
+Please note that when modifying anything in the javascript folder (including `config.js`), you need to run `npm run dev` from the `src` folder to recompile it otherwise it won't show up on the server. This is since the django template pulls the contents from a webpack bundle, not the javascript files themselves. Then s -->
+Start the web application by running 
 ```sh
 python manage.py runserver [PORT]
 ```
