@@ -12,8 +12,11 @@
     margin-right: 5%;
 } */
 
-.col-header-right {
-    /* margin-left: auto; */
+.subheading {
+    margin-top: 10px;
+    font-size: 30px;
+    color: white;
+    text-shadow: -3px 3px 0px #6f527e;
 }
 
 .col-header-left h6 {
@@ -43,4 +46,19 @@
 
 .remove-col-item:hover {
     background-color: #666666;
+}
+
+.non-white-button {
+    border-radius: 5px; 
+    border: none; 
+    padding: 5px 10px; 
+    background: #a370be; 
+    color: white;
+    text-decoration: none;
+}
+
+.non-white-button:hover {
+    background: #a370bec6; 
+    color: white;
+    text-decoration: none;
 }

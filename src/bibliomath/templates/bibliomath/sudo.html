@@ -4,11 +4,12 @@
     <link rel="stylesheet" href="{% static 'bibliomath/gridstyles.css' %}">
     <link rel="stylesheet" href="{% static 'bibliomath/sudo.css' %}">
     <link rel="stylesheet" href="{% static 'bibliomath/collection.css' %}">
+    <link rel="stylesheet" href="{% static 'bibliomath/explore.css' %}">
 {% endblock stylesheets %}
 {% block content %}
     <div> 
-        <h2 class="sudo-header">List of Topics</h2> 
-        <a class="btn btn-secondary" href="{% url 'topic-create' %}">Create new topic</a> 
+        <h2 class="subheading">List of Topics</h2> 
+        <a class="btn btn-secondary purple-button" href="{% url 'topic-create' %}">Create new topic</a> 
     </div>
     <div class="grid-container">
         {% for topic in topics %}
@@ -21,8 +22,8 @@
         {% endfor %}
     </div>  
     <div> 
-        <h2 class="sudo-header">List of Resources</h2> 
-        <a class="btn btn-secondary" href="{% url 'resource-create' %}">Create new resource</a> 
+        <h2 class="subheading">List of Resources</h2> 
+        <a class="btn btn-secondary purple-button" href="{% url 'resource-create' %}">Create new resource</a> 
     </div>
     <div class="grid-container">
         {% for res in resources %}

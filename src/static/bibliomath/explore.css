@@ -11,3 +11,14 @@ input[type=text], textarea {
 .create-resource {
     margin-top: 1%;
 }
+
+.purple-button {
+    background-color: white;
+    color: black;
+    box-shadow: -4px 4px #6f527e;
+}
+
+.create-resource a:hover {
+    color: black;
+    background-color: rgb(210, 210, 210);
+}

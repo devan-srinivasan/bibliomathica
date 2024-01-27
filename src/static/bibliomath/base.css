@@ -1,12 +1,9 @@
 .header-bar {
-    border-radius: 10px;
-    border-width: 4px;
-    border-style: solid;
     display: flex;
     align-items: center;
     flex-direction: row;
-    background-color: white;
-    margin: 50px 40px 0px 40px;
+    padding: 30px 0px 10px 0px;
+    margin: 0 50px;
 }
 
 .content {
@@ -15,14 +12,24 @@
 
 .logo {
     margin: 0;
-    color: black;
-    padding-left: 2%;
+    color: white;
+    font-weight: 700;
+    text-shadow: -4px 4px #6f527e;
+}
+
+.logo a {
+    color: white;
+    text-decoration: none;
+}
+
+.logo a:hover {
+    color: white;
+    text-decoration: none;
 }
 
 .nav-bar {
     list-style-type: none;
     margin-left: auto;
-    margin-right: 2%;
     margin-top: 0;
     margin-bottom: 0;
     padding: 0;
@@ -31,19 +38,22 @@
   
 .nav-item {
     float: left;
+    font-size: 25px;
 }
 
 .nav-item a {
     display: block;
-    color: black;
+    color: white;
     text-align: center;
     padding: 14px 16px;
+    font-size: 25px;
+    text-shadow: -2.5px 2.5px #6f527e;
     text-decoration: none;
-    font-size: 20px;
 }
 
 .nav-item a:hover {
-    color:#666666;
+    color: white;
+    text-decoration-color:white;
 }
 
 /* .nav-item:hover {
@@ -51,13 +61,14 @@
 } */
 
 .content-section {
-    margin-top: 2%;
-    border-style: solid;
-    border-radius: 10px;
-    border-width: 2px;
-    width: 50%;
+    margin-top: 20px;
+    border-radius: 15px;
+    width: 65%;
     margin-left: auto;
     margin-right: auto;
+    background: white;
+    padding: 20px;
+    box-shadow: -5px 5px 20px #6f527e;
 }
 
 button:hover {

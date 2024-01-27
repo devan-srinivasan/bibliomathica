@@ -7,9 +7,9 @@
         {% block stylesheets %}{% endblock %}
         <title>Bibliomathica</title>
     </head>
-    <body>
+    <body style="background-color: #a370be;">
         <div class="header-bar">
-            <h1 class="logo">Bibliomathica</h1>
+            <h1 class="logo"><a href="/explore">Bibliomathica</a></h1>
             <ul class="nav-bar">
                 {% if user.is_superuser %}
                 <li class="nav-item"><b><a href="/sudo">Sudo</a></b></li>

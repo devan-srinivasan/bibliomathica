@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 {% block stylesheets %}
-    
+<link rel="stylesheet" href="{% static 'bibliomath/collection.css' %}">
 {% endblock stylesheets %}
 {% block content %}
 {% load crispy_forms_tags %}
-<div class="content-section">
+<div class="content-section" style="width: 370px">
     <form class="user-form" method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
@@ -13,11 +13,11 @@
                 {{ form|crispy }}
         </fieldset>
         <div>
-            <button type="submit">Login</button>
+            <button class="non-white-button" type="submit">Login</button>
         </div>
     </form>
     <div class="register-button">
-        <small>Want to have An Account? <a href="{% url 'register' %}">Sign up now</a> </small>
+       Want to have An Account? <a class="non-white-button" style="margin-left: 12px;" href="{% url 'register' %}">Sign up now</a>
     </div>
 </div>
 {% endblock content %}

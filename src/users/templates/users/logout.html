@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 {% block stylesheets %}
-    
+<link rel="stylesheet" href="{% static 'bibliomath/logout.css' %}">
+<link rel="stylesheet" href="{% static 'bibliomath/collection.css' %}">
 {% endblock stylesheets %}
 {% block content %}
-    <h4 style="margin: 10px 0"> You have been logged out</h4>
-    <div>
-        <a href="{% url 'login' %}">Log In Again</a>
+    <div class="logout-wrapper">
+        <h4> You have been logged out</h4>
+        <div>
+            <a class="non-white-button" href="{% url 'login' %}">Log In Again</a>
+        </div>
     </div>
 {% endblock content %}

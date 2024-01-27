@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{% static 'bibliomath/collection.css' %}">
 {% endblock stylesheets %}
 {% block content %}
-    <h4 style="margin-top: 1%;"> {{ collection.first }} </h4>
+    <h4 class="subheading"> Your Collection </h4>
     <div class="grid-container">
         {% for res in resources %}
             <div class="grid-item">
@@ -21,7 +21,7 @@
                             <input type="checkbox" checked="False">
                         </div> -->
                         <div style="margin-right: 5%;">
-                            <a class="btn btn-secondary" href="{% url 'removeResource' id=res.id %}">Remove</a>
+                            <a class="btn btn-secondary non-white-button" href="{% url 'removeResource' id=res.id %}">Remove</a>
                         </div> 
                     </div> 
                 </div>

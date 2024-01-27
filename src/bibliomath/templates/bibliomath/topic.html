@@ -3,10 +3,11 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{% static 'bibliomath/gridstyles.css' %}">
     <link rel="stylesheet" href="{% static 'bibliomath/topic.css' %}">
+    <link rel="stylesheet" href="{% static 'bibliomath/collection.css' %}">
 {% endblock stylesheets %}
 {% block content %}
-    <h2 class="topic-title" style="background-color: {{ color }};">{{ title }}</h2>
-    <div> <h4>Other Resources</h4></div>
+    <h2 class="topic-title" style="text-shadow: -3px 3px 10px {{ color }}; background: white; padding: 7px 12px;">{{ title }}</h2>
+    <div> <h4 style="font-size: 30px; color: white; text-shadow: -3px 3px 0px #6f527e;">Other Resources</h4></div>
     <div class="grid-container">
         {% for res in resources_out %}
             <div class="grid-item">
@@ -14,13 +15,13 @@
                     <a class="grid-item-link" href="{{ res.link }}">
                         <h4 class="grid-item-link">{{ res.title }}</h4>
                     </a>
-                    <div class="add-col-btn"><a class="btn btn-secondary" href="{% url 'addResource' id=res.id title=title %}">Add to collection</a></div>
+                    <div class="add-col-btn"><a class="btn btn-secondary non-white-button" href="{% url 'addResource' id=res.id title=title %}">Add to collection</a></div>
                 </div>
                 <p>{{ res.description }}</p>
             </div>
         {% endfor %}
     </div>
-    <div style="margin-top: 1%;"> <h4>Your Collection:</h4></div>
+    <div style="margin-top: 1%;"> <h4 style="font-size: 30px; color: white; text-shadow: -3px 3px 0px #6f527e;">Your Collection:</h4></div>
     <div class="grid-container">
         {% for res in resources_in %}
             <div class="grid-item">

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block stylesheets %}
-    
+<link rel="stylesheet" href="{% static 'bibliomath/collection.css' %}">
 {% endblock stylesheets %}
 {% load crispy_forms_tags %}
 {% block content %}
@@ -13,11 +13,11 @@
                 {{ form|crispy }}
         </fieldset>
         <div>
-            <button type="submit">Sign up</button>
+            <button class="non-white-button" type="submit">Sign up</button>
         </div>
     </form>
     <div class="register-button">
-        <small>Already Have An Account? <a href="{% url 'login' %}">Sign in</a> </small>
+        <small>Already Have An Account? <a class="non-white-button" style="margin-left: 12px;" href="{% url 'login' %}">Sign in</a> </small>
     </div>
 </div>
 {% endblock content %}

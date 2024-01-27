@@ -12,11 +12,11 @@
 }
 
 .grid-item {
-    border-style: solid;
     border-radius: 10px;
-    border-width: 2px;
     background-color: white;
-    padding: 10px;
+    padding: 22px;
+    box-shadow: -7px 7px 10px #6f527e;
+
 }
 
 .grid-item-link:hover {

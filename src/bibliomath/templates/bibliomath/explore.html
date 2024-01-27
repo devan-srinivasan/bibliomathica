@@ -6,12 +6,12 @@
 {% endblock stylesheets %}
 {% block content %}
     <div class="create-resource">
-        <a class="btn btn-secondary" href="{% url 'resource-create' %}">Add resource</a> 
+        <a class="btn btn-secondary purple-button" href="{% url 'resource-create' %}">Add resource</a> 
     </div>
     <div class="grid-container">
         {% for topic in topics %}
-            <div class="grid-item" style="background-color: {{ topic.color }}">
-                <a class="grid-item-link" href="{% url 'topic' title=topic.title %}">
+            <div class="grid-item">
+                <a class="grid-item-link" style="text-shadow: -3px 3px 10px {{ topic.color }}" href="{% url 'topic' title=topic.title %}">
                     <h2>{{ topic.title }}</h2>
                 </a>
                 <p>{{ topic.description }}</p> 

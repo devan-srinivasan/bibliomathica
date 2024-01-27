@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block stylesheets %}
-
+<link rel="stylesheet" href="{% static 'bibliomath/collection.css' %}">
 {% endblock stylesheets %}
 {% load crispy_forms_tags %}
 {% block content %}
@@ -21,7 +21,7 @@
                 {{ p_form|crispy }}
         </fieldset>
         <div>
-            <button type="submit">Update</button>
+            <button type="submit" class="non-white-button">Update</button>
         </div>
       </form>
     </div>
