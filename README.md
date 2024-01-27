@@ -3,8 +3,8 @@ Library of fun mathematics
 
 This is a personal project between myself and William Zhang. We both are passionate about math, but find that gradeschool courses take the fun away. We always wanted somewhere to go to find fun problems and resources across different domains, so hence this project was born. We are aware that Google and Youtube exist, but this is aimed to be a fun collection that serves as a central library. Enjoy
 
-<img src="./src/media/demopics/explore.png/" width="350" height="160"></img> <img src="./src/media/demopics/collection.png/" width="350" height="160"></img>
-<img src="./src/media/demopics/login.png/" width="350" height="150"></img> <img src="./src/media/demopics/topics.png/" width="350" height="120"></img>
+<img src="./src/media/demopics/explore.png/" width="470" height="220"></img> <img src="./src/media/demopics/collection.png/" width="470" height="220"></img>
+<img src="./src/media/demopics/login.png/" width="470" height="185"></img> <img src="./src/media/demopics/topics.png/" width="470" height="140"></img>
 
 **Python**<br>
 First make a virtual environment installed:
